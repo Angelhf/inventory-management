@@ -1,0 +1,36 @@
+.container{
+    display:grid;
+    height:100vh;
+    grid-template-columns: 0.5fr 0.25fr 1.25fr 1.25fr 0.25fr 0.5fr;
+    grid-template-rows: 0.2fr 4.6fr 0.2fr;
+
+grid-template-areas:
+"sidebar sortBy search search search loginSettings"
+"sidebar itemHolder itemHolder itemHolder itemHolder itemHolder"
+"sidebar itemHolder itemHolder itemHolder itemHolder itemHolder"
+}
+#searchBar{
+background-color:orange;
+grid-area: search;
+}
+#itemHolder{
+    background-color:purple;
+    grid-area: itemHolder;
+   display:grid;
+   grid-template-columns: auto auto auto auto;
+
+}
+
+#sidebar{
+    background-color: red;
+    grid-area: sidebar;
+}
+#sortBy{
+    background-color: blue;
+    grid-area: sortBy;
+}
+#loginSettings{
+    background-color: green;
+    grid-area: loginSettings;
+}
+
