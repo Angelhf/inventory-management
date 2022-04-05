@@ -1,17 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Open Sans', sans-serif;
+
+}
+
 .container {
     display:grid;
     height:100vh;
     grid-template-columns: 0.5fr 0.25fr 1.25fr 1.25fr 0.25fr 0.5fr;
-    grid-template-rows: 0.2fr 4.6fr 0.2fr;
+    grid-template-rows: 0.25fr 4.6fr 0.2fr;
 
     grid-template-areas:
     "sidebar sortBy search search search loginSettings"
     "sidebar itemHolder itemHolder itemHolder itemHolder itemHolder"
     "sidebar itemHolder itemHolder itemHolder itemHolder itemHolder"
 }
+
 #searchBar {
     background-color:orange;
+    display: inline-flex;
+    padding: 10px 10px;
     grid-area: search;
+}
+
+#searchBar h3 {
+    padding: 3px 10px;
+}
+
+#search-bar {
+    height: 30px;
+    min-width: 200px;
 }
 
 #itemHolder {
@@ -26,12 +47,50 @@
     background-color: red;
     grid-area: sidebar;
 }
+
+#sidebar h1 {
+    text-align: center; 
+    padding: 10px; 
+}
+
+#template-btn-container {
+    margin: 50px 70px; 
+}
+
+#template-btn {
+    font-size: 20px;
+    padding: 10px 50px; 
+    background-color: aqua;
+    border: none;
+    border-radius: 20px;
+}
+
 #sortBy {
-    background-color: blue;
+    background-color: chartreuse;
     grid-area: sortBy;
 }
+
+#sortBy h3 {
+    text-align: center;
+    padding: 12px;
+}
+
 #loginSettings {
     background-color: green;
     grid-area: loginSettings;
 }
+
+.sidebar-fns li {
+    min-height: 30px;
+    min-width: 150px;
+    list-style-type: none;
+    text-decoration: none;
+    text-align: center;
+    margin: 50px 20px;
+    color: black;
+    background-color: aqua;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
 
