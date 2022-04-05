@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="inventoryManager.js"></script>
     <title>Main Inventory Page</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="mainView">
         <div id="itemHolder">
             <div id="createItem">
                 <button type="button" id="createItemMain">
@@ -51,6 +52,28 @@
         </div>
         <div id="loginSettings">Settings/Login</div>
         <div id="footer">Footer</div>
+    </div>
+    
+    <!--Item creator view (hidden by default)-->
+    <div hidden id = "itemCreationWindow">
+     <div id="itemCreatorChooseTemplate">
+         <select name="templates" id="templateDropDown">
+             <option value="Default">Default</option>
+         </select>
+     </div>
+     <div id="itemCreateCancel">
+         <button type="button" id="cancelCreateItem">
+             <strong>Cancel</strong>
+         </button>
+     </div>
+     <div id="createItemProperties">
+
+     </div>
+     <div>
+         <button type="button" id="confirmCreateItem">
+             <strong>Create Item</strong>
+         </button>
+     </div>
     </div>
 </body>
 
