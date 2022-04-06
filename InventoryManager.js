@@ -15,7 +15,8 @@ var allItems =[];
 var allFavorites = [];
 var allGroups = [];
 var allTags = [];
-const DEFAULT = ["itemCreatorPropertyName","itemCreatorPropertyImage"];
+var templates = {
+    'Default' : []
 
 }
 
@@ -26,8 +27,26 @@ function createItemPopup(){
     creator.style.display = 'grid';
 }
 function createItemConfirm(){
+ var template = document.getElementById('itemCreatorTemplate');
+   var item = {
+        name: document.getElementById('itemCreatorPropertyName').value,
+        image: document.getElementById('itemCreatorPropertyImage').value
+    }
+    for(i=0;i<template.length;i++){
+        property = template[i];
+        item[property] = document.getElementById('itemCreatorTemplate' + property);
+    }
+    allItems.push(item);
+    console.log(allItems);
+    }
+    
+    
+
 
 }
+
+
+
 
 
 function deleteItemPopup(){}
