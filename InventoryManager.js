@@ -4,33 +4,39 @@ function domLoaded(){
 document.getElementById("createItemMain").addEventListener("click", function(){
     createItemPopup();
 })
-document.getElementById("cancelCreateItem").addEventListener("click", function(){
+document.getElementById("itemCreatorCancel").addEventListener("click", function(){
     returnToMain();
 })
-document.getElementById("confirmCreateItem").addEventListener("click", function(){
+document.getElementById("itemCreatorConfirm").addEventListener("click", function(){
+    createItemConfirm()
     returnToMain();
 })
-
+var allItems =[];
+var allFavorites = [];
+var allGroups = [];
+var allTags = [];
+const DEFAULT = ["itemCreatorPropertyName","itemCreatorPropertyImage"];
 
 }
 
 function createItemPopup(){
-    var main = document.getElementById('mainView');
+    main = document.getElementById('mainView');
     main.style.display = 'none';
-    var creator = document.getElementById('itemCreationWindow');
+    creator = document.getElementById('itemCreationWindow');
     creator.style.display = 'grid';
 }
 function createItemConfirm(){
 
 }
 
+
 function deleteItemPopup(){}
 function deleteItemConfirm(){}
-function repopulateItems(){}
+function repopulateMain(){}
 function returnToMain(){
-    var creator = document.getElementById('itemCreationWindow');
+    creator = document.getElementById('itemCreationWindow');
     creator.style.display = 'none';
-    var main = document.getElementById('mainView');
+    main = document.getElementById('mainView');
     main.style.display = 'grid';
 
 }

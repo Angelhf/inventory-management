@@ -11,13 +11,17 @@
 </head>
 
 <body>
-    <div class="container" id="mainView">
+    <div class="mainContainer" id="mainView">
+        <div id="sleuthLogo">Sleuth</div>
+        <!--Middle section that has the create item button and all created items-->
         <div id="itemHolder">
+            <!--Create item button that takes you to the item Creation Window-->
             <div id="createItem">
                 <button type="button" id="createItemMain">
                     <strong>Create Item</strong>
                 </button>
             </div>
+            <!--Example items-->
             <div class="item">item 1</div>
             <div class="item">item 2</div>
             <div class="item">item 3</div>
@@ -27,6 +31,7 @@
             <div class="item">item 7</div>
             <div class="item">item 8</div>
         </div>
+        <!--The sidebar that has various buttons-->
         <div id="sidebar">
             <h1>Sidebar</h1>
             <div id="template-btn-container">
@@ -55,26 +60,33 @@
     </div>
     
     <!--Item creator view (hidden by default)-->
-    <div hidden id = "itemCreationWindow">
-     <div id="itemCreatorChooseTemplate">
-         <select name="templates" id="templateDropDown">
+    <div hidden class = "itemCreatorContainer" id = "itemCreationWindow">
+     <div id="itemCreatorTemplateDiv">
+         Choose Template: <select name="templates" id="itemCreatorTemplate">
              <option value="Default">Default</option>
          </select>
      </div>
-     <div id="itemCreateCancel">
-         <button type="button" id="cancelCreateItem">
+     <div id="itemCreatorCancelDiv">
+         <button type="button" id="itemCreatorCancel">
              <strong>Cancel</strong>
          </button>
      </div>
-     <div id="createItemProperties">
-
+     <div id="itemCreatorPropertiesDiv">
+         <div>Name: <input type="text" id="itemCreatorPropertyName" placeholder="Insert Item Name"></div>
+        <div>Image: <input type="image" id="itemCreatorPropertyImage"></div>
      </div>
-     <div>
-         <button type="button" id="confirmCreateItem">
+     <div id="itemCreatorFavoriteDiv">
+        <label for="itemCreatorFavorite" >Favorite:</label>
+        <input type="checkbox" name="itemCreatorFavorite" id="itemCreatorFavorite">
+     </div>
+     <div id="itemCreatorConfirmDiv">
+         <button type="button" id="itemCreatorConfirm">
              <strong>Create Item</strong>
          </button>
      </div>
     </div>
+
+    
 </body>
 
 </html>

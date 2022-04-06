@@ -7,14 +7,14 @@
 
 }
 
-.container {
+.mainContainer {
     display:grid;
     height:100vh;
     grid-template-columns: 0.5fr 0.25fr 1.25fr 1.25fr 0.25fr 0.5fr;
     grid-template-rows: 0.25fr 4.6fr 0.2fr;
 
     grid-template-areas:
-    "sidebar sortBy search search search loginSettings"
+    "sleuth sortBy search search search loginSettings"
     "sidebar itemHolder itemHolder itemHolder itemHolder itemHolder"
     "sidebar itemHolder itemHolder itemHolder itemHolder itemHolder"
 }
@@ -92,5 +92,39 @@
     border-radius: 20px;
     cursor: pointer;
 }
+#sleuthLogo{
+    background-color:cyan;
+    grid-area: sleuth;
+}
 
-
+.itemCreatorContainer {
+display:hidden;
+height:100vh;
+grid-template-columns: 1fr 4.5fr 1fr;
+grid-template-rows: 1fr 4fr 1fr 1fr;
+grid-template-areas:
+"itemCreatorTemplate itemCreatorProperties ."
+". itemCreatorProperties ."
+". itemCreatorProperties itemCreatorFavorite"
+"itemCreatorCancel itemCreatorProperties itemCreatorConfirm"
+}
+#itemCreatorTemplateDiv{
+    background-color: red;
+    grid-area:itemCreatorTemplate;
+}
+#itemCreatorConfirmDiv{
+    background-color:blue;
+    grid-area:itemCreatorConfirm;
+}
+#itemCreatorCancelDiv{
+background-color: green;
+grid-area:itemCreatorCancel;
+}
+#itemCreatorPropertiesDiv{
+background-color: yellow;
+grid-area:itemCreatorProperties;
+}
+#itemCreatorFavoriteDiv{
+background-color: pink;
+grid-area:itemCreatorFavorite;
+}
