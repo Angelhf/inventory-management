@@ -7,11 +7,12 @@ document.getElementById("createItemMain").addEventListener("click", function(){
 document.getElementById("itemCreatorCancel").addEventListener("click", function(){
     returnToMain();
 })
-document.getElementById("itemCreatorConfirm").addEventListener("click", function(){
+document.getElementById("itemCreatorConfirm").addEventListener("click", async function(){
     createItemConfirm()
     returnToMain();
 })
-var allItems =[];
+}
+allItems =[];
 var allFavorites = [];
 var allGroups = [];
 var allTags = [];
@@ -27,23 +28,24 @@ function createItemPopup(){
     creator.style.display = 'grid';
 }
 function createItemConfirm(){
- var template = document.getElementById('itemCreatorTemplate');
+ const template = document.getElementById('itemCreatorTemplate');
    var item = {
         name: document.getElementById('itemCreatorPropertyName').value,
-        image: document.getElementById('itemCreatorPropertyImage').value
+        image:  URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0])
     }
     for(i=0;i<template.length;i++){
         property = template[i];
         item[property] = document.getElementById('itemCreatorTemplate' + property);
     }
-    allItems.push(item);
-    console.log(allItems);
+    window.allItems.push(item);
+    
     }
     
     
 
 
-}
+
+
 
 
 
@@ -51,12 +53,31 @@ function createItemConfirm(){
 
 function deleteItemPopup(){}
 function deleteItemConfirm(){}
-function repopulateMain(){}
+function repopulateMain(){
+    console.log(window.allItems);
+    html = " ";
+    if(allItems.length==0){
+        return;
+    }
+   for(i = 0; i<window.allItems.length; i++){
+    itemid = 'item' + i;
+     html+='<div id="' + itemid + '"><strong> ' + allItems[i].name +' </strong><img src="' + allItems[i].image + '"></div>';
+    }
+   
+   document.querySelector(".itemsMain").innerHTML = html;
+   for(i = 0; i<window.allItems.length; i++){
+       itemid= '#item' +i;
+       document.querySelector(itemid).style.textAlign = "center";
+   }
+}
+
 function returnToMain(){
+    repopulateMain();
     creator = document.getElementById('itemCreationWindow');
     creator.style.display = 'none';
     main = document.getElementById('mainView');
     main.style.display = 'grid';
+    console.log(window.allItems);
 
 }
 //End Sprint 1

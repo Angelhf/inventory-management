@@ -35,12 +35,12 @@
     min-width: 200px;
 }
 
-#itemHolder {
+.itemsMain {
     background-color:purple;
     grid-area: itemHolder;
     display:grid;
-    grid-template-columns: auto auto auto auto;
-
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-template-rows: 250px;
 }
 
 #sidebar {
