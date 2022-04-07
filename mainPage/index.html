@@ -48,6 +48,7 @@
         <div id="loginSettings">Settings/Login</div>
         <div id="footer">Footer</div>
     </div>
+<<<<<<< HEAD:mainPage/index.html
     
     <!--Item creator view (hidden by default)-->
     <div hidden class = "itemCreatorContainer" id = "itemCreationWindow">
@@ -75,8 +76,35 @@
          </button>
      </div>
     </div>
+=======
+>>>>>>> mainbranch:index.html
 
-    
+    <!--Item creator view (hidden by default)-->
+    <div hidden class="itemCreatorContainer" id="itemCreationWindow">
+        <div id="itemCreatorTemplateDiv">
+            Choose Template: <select name="templates" id="itemCreatorTemplate">
+                <option value="Default">Default</option>
+            </select>
+        </div>
+        <div id="itemCreatorCancelDiv">
+            <button type="button" id="itemCreatorCancel">
+                <strong>Cancel</strong>
+            </button>
+        </div>
+        <div id="itemCreatorPropertiesDiv">
+            <div>Name: <input type="text" id="itemCreatorPropertyName" placeholder="Insert Item Name"></div>
+            <div>Image: <input type="image" id="itemCreatorPropertyImage"></div>
+        </div>
+        <div id="itemCreatorFavoriteDiv">
+            <label for="itemCreatorFavorite">Favorite:</label>
+            <input type="checkbox" name="itemCreatorFavorite" id="itemCreatorFavorite">
+        </div>
+        <div id="itemCreatorConfirmDiv">
+            <button type="button" id="itemCreatorConfirm">
+                <strong>Create Item</strong>
+            </button>
+        </div>
+    </div>
 </body>
 
 </html>

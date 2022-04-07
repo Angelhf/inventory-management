@@ -1,5 +1,6 @@
 window.addEventListener("DOMContentLoaded", domLoaded);
 //Sprint 1
+<<<<<<< HEAD:mainPage/InventoryManager.js
 function domLoaded(){
 document.getElementById("createItemMain").addEventListener("click", function(){
     createItemPopup();
@@ -18,15 +19,34 @@ var allGroups = [];
 var allTags = [];
 var templates = {
     'Default' : []
+=======
+function domLoaded() {
+    document.getElementById("createItemMain").addEventListener("click", function () {
+        createItemPopup();
+    })
+    document.getElementById("itemCreatorCancel").addEventListener("click", function () {
+        returnToMain();
+    })
+    document.getElementById("itemCreatorConfirm").addEventListener("click", function () {
+        createItemConfirm()
+        returnToMain();
+    })
+    var allItems = [];
+    var allFavorites = [];
+    var allGroups = [];
+    var allTags = [];
+    const DEFAULT = ["itemCreatorPropertyName", "itemCreatorPropertyImage"];
+>>>>>>> mainbranch:InventoryManager.js
 
 }
 
-function createItemPopup(){
+function createItemPopup() {
     main = document.getElementById('mainView');
-    main.style.display = 'none';
+    main.style.display = 'none'; //creates inline style in the HTML... maybe create css class with grid and assign class
     creator = document.getElementById('itemCreationWindow');
-    creator.style.display = 'grid';
+    creator.style.display = 'grid'; // same thing as before...
 }
+<<<<<<< HEAD:mainPage/InventoryManager.js
 function createItemConfirm(){
  const template = document.getElementById('itemCreatorTemplate');
    var item = {
@@ -48,9 +68,13 @@ function createItemConfirm(){
 
 
 
+=======
+function createItemConfirm() {
+>>>>>>> mainbranch:InventoryManager.js
 
 
 
+<<<<<<< HEAD:mainPage/InventoryManager.js
 function deleteItemPopup(){}
 function deleteItemConfirm(){}
 function repopulateMain(){
@@ -73,22 +97,32 @@ function repopulateMain(){
 
 function returnToMain(){
     repopulateMain();
+=======
+function deleteItemPopup() { }
+function deleteItemConfirm() { }
+function repopulateMain() { }
+function returnToMain() {
+>>>>>>> mainbranch:InventoryManager.js
     creator = document.getElementById('itemCreationWindow');
-    creator.style.display = 'none';
+    creator.style.display = 'none'; // same thing as before...
     main = document.getElementById('mainView');
+<<<<<<< HEAD:mainPage/InventoryManager.js
     main.style.display = 'grid';
     console.log(window.allItems);
+=======
+    main.style.display = 'grid'; // same thing as before...
+>>>>>>> mainbranch:InventoryManager.js
 
 }
 //End Sprint 1
 
 
 
-function toGroupView(){}
-function createGroup(){}
-function deleteGroup(){}
-function importToGroup(){}
-function toFavorites(){}
-function createTemplatePopup(){}
-function createTemplateConfirm(){}
-function deleteTemplate(){}
+function toGroupView() { }
+function createGroup() { }
+function deleteGroup() { }
+function importToGroup() { }
+function toFavorites() { }
+function createTemplatePopup() { }
+function createTemplateConfirm() { }
+function deleteTemplate() { }
