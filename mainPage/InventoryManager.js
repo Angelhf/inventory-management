@@ -41,16 +41,6 @@ function createItemConfirm() {
 
 }
 
-
-
-
-
-
-
-
-
-
-
 function deleteItemPopup() { }
 function deleteItemConfirm() { }
 function repopulateMain() {

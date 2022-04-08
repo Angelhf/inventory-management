@@ -10,17 +10,28 @@
 </head>
 
 <body>
-    <div id="container">
-        <div id="loginWindow">
-            <h1>Sleuth Login</h1>
-            <form action="" id="loginForm">
-                <h3>Username:</h3>
-                <input type="text" name="user" id="usernmae">
-                <h3>Password:</h3>
-                <input type="text" name="pass" id="password">
-            </form>
-        </div>
+    <div class="container">
+        <form class="form" id="loginForm">
+            <h1 class="formTitle">Sleuth Login</h1>
+            <div class="formMessage formMessageError">Incorrect username or password.</div>
+            <div class="formInputGroup">
+                <input type="text" class="formInput" autofocus placeholder="Username or Email">
+                <div class="formInputErrorMsg">Error Message</div>
+            </div>
+            <div class="formInputGroup">
+                <input type="password" class="formInput" autofocus placeholder="Password">
+                <div class="formInputErrorMsg"></div>
+            </div>
+            <button class="formButton" type="submit">Login</button>
+            <p class="formText">
+                <a href="#" class="formLink">Forgot Password?</a>
+            </p>
+            <p class="formText">
+                <a id="linkCreateAccount" href="#" class="formLink">Don't have an account? Create an account.</a>
+            </p>
+        </form>
     </div>
+    <script src="main.js"></script>
 </body>
 
 </html>
