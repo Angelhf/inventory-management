@@ -13,7 +13,7 @@
 <body>
     <div class="mainContainer" id="mainView">
         <div id="sleuthLogo">Sleuth</div>
-        <!--Middle section that has the create item button and all created items-->
+        <!--Middle section that has all created items-->
             <div class="itemsMain"></div>
         <!--The sidebar that has various buttons-->
         <div id="sidebar">
@@ -49,24 +49,15 @@
         <div id="footer">Footer</div>
     </div>
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <!--Item creator view (hidden by default)-->
     <div hidden class="itemCreatorContainer" id="itemCreationWindow">
+        <!--Displays a list of all of the templates that the user has, and allows the user to choose between them, with the list of properties changing with each template-->
         <div id="itemCreatorTemplateDiv">
             Choose Template: <select name="templates" id="itemCreatorTemplate">
                 <option value="Default">Default</option>
             </select>
         </div>
+        <!--The button that cancels the item creation and takes the user back to the main page-->
         <div id="itemCreatorCancelDiv">
             <button type="button" id="itemCreatorCancel">
                 <strong>Cancel</strong>

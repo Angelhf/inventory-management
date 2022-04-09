@@ -28,7 +28,7 @@ function createItemPopup() {
     creator.style.display = 'grid'; // same thing as before...
 }
 function createItemConfirm(){
- const template = document.getElementById('itemCreatorTemplate');
+ const template = document.getElementById('itemCreatorTemplate'); 
    var item = {
         name: document.getElementById('itemCreatorPropertyName').value,
         image:  URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0])
