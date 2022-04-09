@@ -38,8 +38,8 @@
     background-color:purple;
     grid-area: itemHolder;
     display:grid;
-    grid-template-columns:1fr 1fr 1fr 1fr;
-    grid-template-rows: 1.5fr 1.5fr 1.5fr 1.5fr;
+    grid-template-columns:repeat(auto-fit, 320px);
+    grid-template-rows:repeat(auto-fit, 320px);
     row-gap: 30px;
     column-gap: 30px;
     overflow: scroll; 
@@ -133,7 +133,8 @@
 
 .itemContainer {
     background-color: aquamarine;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
     justify-content: center;
     height: 300px;
     width: 300px; 
@@ -142,15 +143,18 @@
     border-width: 10px;
     overflow: hidden;
     margin: 10px 10px; 
+    text-align:justify;
 }
 
 .itemContainer strong {
-    justify-content: center;
-    display: block;
+   text-align: center;
+
 }
 
 .itemContainer img {
-    padding: 35px 5px;
+    padding: 50px;
     width: 200px;
-    object-fit: contain;
+    height: 200px;
+    
+    /*object-fit: contain;*/
 }

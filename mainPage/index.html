@@ -11,18 +11,19 @@
 </head>
 
 <body>
+    <!--The main area of the webpage that shows all of the items-->
     <div class="mainContainer" id="mainView">
+
+
         <div id="sleuthLogo">Sleuth</div>
-<<<<<<< HEAD
         <!--Middle section that has all created items-->
             <div class="itemsMain"></div>
-=======
-        <!--Middle section that has the create item button and all created items-->
-        <div class="itemsMain"></div>
->>>>>>> accedfa4c587137d823b65dc8a6b6f0b92fddad6
+
+
         <!--The sidebar that has various buttons-->
         <div id="sidebar">
             <h1>Sidebar</h1>
+            <!--BTemplate button that takes you to the template creation menu-->
             <div id="template-btn-container">
                 <button type="button" id="template-btn">
                     <strong>Create Template</strong>
@@ -34,6 +35,7 @@
                     <strong>Create Item</strong>
                 </button>
             </div>
+            <!--Unfinished sidebar functions-->
             <div class="sidebar-fns">
                 <ul>
                     <li>Admin view/End user view</li>
@@ -43,31 +45,20 @@
                 </ul>
             </div>
         </div>
+        <!--Button that will allow you to sort by certain attributes-->
         <div id="sortBy">
             <h3>Sort By</h3>
         </div>
+        <!--Search bar for searching for certain items-->
         <div id="searchBar">
             <h3>Search Bar</h3>
             <input type="text" id="search-bar" placeholder="search for an item or a tag">
         </div>
+        <!--Button for taking you to the settings page-->
         <div id="loginSettings">Settings/Login</div>
         <div id="footer">Footer</div>
     </div>
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> accedfa4c587137d823b65dc8a6b6f0b92fddad6
     <!--Item creator view (hidden by default)-->
     <div hidden class="itemCreatorContainer" id="itemCreationWindow">
         <!--Displays a list of all of the templates that the user has, and allows the user to choose between them, with the list of properties changing with each template-->
@@ -82,14 +73,17 @@
                 <strong>Cancel</strong>
             </button>
         </div>
+        <!--All of the item property inputs that the user will have access to-->
         <div id="itemCreatorPropertiesDiv">
             <div>Name: <input type="text" id="itemCreatorPropertyName" placeholder="Insert Item Name"></div>
             <div>Image: <input type="file" id="itemCreatorPropertyImage"></div>
         </div>
+        <!--Boolean button for favoriting items-->
         <div id="itemCreatorFavoriteDiv">
             <label for="itemCreatorFavorite">Favorite:</label>
             <input type="checkbox" name="itemCreatorFavorite" id="itemCreatorFavorite">
         </div>
+        <!--button for confirming the creation of an item-->
         <div id="itemCreatorConfirmDiv">
             <button type="button" id="itemCreatorConfirm">
                 <strong>Create Item</strong>
