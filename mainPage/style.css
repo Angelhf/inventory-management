@@ -1,25 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 * {
-    margin: 0; 
-    padding: 0; 
+    margin: 0;
+    padding: 0;
     font-family: 'Open Sans', sans-serif;
 }
 
 .mainContainer {
-    display:grid;
-    height:100vh;
+    display: grid;
+    height: 100vh;
     grid-template-columns: 0.5fr 0.25fr 1.25fr 1.25fr 0.25fr 0.5fr;
     grid-template-rows: 0.25fr 4.6fr 0.2fr;
 
     grid-template-areas:
-    "sleuth sortBy search search search loginSettings"
-    "sidebar itemHolder itemHolder itemHolder itemHolder itemHolder"
-    "sidebar itemHolder itemHolder itemHolder itemHolder itemHolder"
+        "sleuth sortBy search search search loginSettings"
+        "sidebar itemHolder itemHolder itemHolder itemHolder itemHolder"
+        "sidebar itemHolder itemHolder itemHolder itemHolder itemHolder"
 }
 
 #searchBar {
-    background-color:orange;
+    background-color: orange;
     display: inline-flex;
     padding: 10px 10px;
     grid-area: search;
@@ -35,14 +35,14 @@
 }
 
 .itemsMain {
-    background-color:purple;
+    background-color: purple;
     grid-area: itemHolder;
-    display:grid;
-    grid-template-columns:repeat(auto-fit, 320px);
-    grid-template-rows:repeat(auto-fit, 320px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 320px);
+    grid-template-rows: repeat(auto-fit, 320px);
     row-gap: 30px;
     column-gap: 30px;
-    overflow: scroll; 
+    overflow: scroll;
 }
 
 #sidebar {
@@ -51,17 +51,17 @@
 }
 
 #sidebar h1 {
-    text-align: center; 
-    padding: 10px; 
+    text-align: center;
+    padding: 10px;
 }
 
 #template-btn-container {
-    margin: 50px 70px; 
+    margin: 50px 70px;
 }
 
 #template-btn {
     font-size: 20px;
-    padding: 10px 50px; 
+    padding: 10px 50px;
     background-color: aqua;
     border: none;
     border-radius: 20px;
@@ -94,67 +94,75 @@
     border-radius: 20px;
     cursor: pointer;
 }
-#sleuthLogo{
-    background-color:cyan;
+
+#sleuthLogo {
+    background-color: cyan;
     grid-area: sleuth;
 }
 
 .itemCreatorContainer {
-    display:hidden;
-    height:100vh;
+    display: hidden;
+    height: 100vh;
     grid-template-columns: 1fr 4.5fr 1fr;
     grid-template-rows: 1fr 4fr 1fr 1fr;
     grid-template-areas:
-    "itemCreatorTemplate itemCreatorProperties ."
-    ". itemCreatorProperties ."
-    ". itemCreatorProperties itemCreatorFavorite"
-    "itemCreatorCancel itemCreatorProperties itemCreatorConfirm"
+        "itemCreatorTemplate itemCreatorProperties ."
+        ". itemCreatorProperties ."
+        ". itemCreatorProperties itemCreatorFavorite"
+        "itemCreatorCancel itemCreatorProperties itemCreatorConfirm"
 }
-#itemCreatorTemplateDiv{
+
+#itemCreatorTemplateDiv {
     background-color: red;
-    grid-area:itemCreatorTemplate;
+    grid-area: itemCreatorTemplate;
 }
-#itemCreatorConfirmDiv{
-    background-color:blue;
-    grid-area:itemCreatorConfirm;
+
+#itemCreatorConfirmDiv {
+    background-color: blue;
+    grid-area: itemCreatorConfirm;
 }
-#itemCreatorCancelDiv{
+
+#itemCreatorCancelDiv {
     background-color: green;
-    grid-area:itemCreatorCancel;
+    grid-area: itemCreatorCancel;
 }
-#itemCreatorPropertiesDiv{
+
+#itemCreatorPropertiesDiv {
     background-color: yellow;
-    grid-area:itemCreatorProperties;
+    grid-area: itemCreatorProperties;
 }
-#itemCreatorFavoriteDiv{
+
+#itemCreatorFavoriteDiv {
     background-color: pink;
-    grid-area:itemCreatorFavorite;
+    grid-area: itemCreatorFavorite;
 }
 
 .itemContainer {
     background-color: aquamarine;
     display: grid;
     grid-template-columns: 1fr;
+    align-items: center;
     justify-content: center;
     height: 300px;
-    width: 300px; 
-    border-color:green;
+    width: 300px;
+    border-color: green;
     border-style: solid;
     border-width: 10px;
     overflow: hidden;
-    margin: 10px 10px; 
-    text-align:justify;
+    margin: 10px 10px;
+    text-align: justify;
 }
 
 .itemContainer strong {
-   text-align: center;
-
+    padding: 0px 0px;
+    text-align: center;
 }
 
 .itemContainer img {
-    padding: 50px;
-    width: 200px;
-    height: 200px;
-    
-    /*object-fit: contain;*/
+    margin: auto;
+    display: block;
+    max-width: 60%;
+    max-height: 200px;
+    overflow: hidden;
+    object-fit: contain;
 }

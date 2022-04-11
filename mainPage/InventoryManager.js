@@ -36,12 +36,12 @@ function createItemPopup() {
     creator.style.display = 'grid'; // same thing as before...
 }
 //goes back to main from the item creator, and adds the item to every global array it needs to be in
-function createItemConfirm(){
+function createItemConfirm() {
     //the template that the item used
- const template = document.getElementById('itemCreatorTemplate'); 
- //creates an item object with each of these traits that all items should have
-   var item = {
-       //name, image, and template are required for all items, and thus will always be required and stored in every item
+    const template = document.getElementById('itemCreatorTemplate');
+    //creates an item object with each of these traits that all items should have
+    var item = {
+        //name, image, and template are required for all items, and thus will always be required and stored in every item
         name: document.getElementById('itemCreatorPropertyName').value,
         image: URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]),
         template: template
@@ -55,10 +55,6 @@ function createItemConfirm(){
     window.allItems.push(item);
 
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> hbbaker
 function deleteItemPopup() { }
 function deleteItemConfirm() { }
 //used to repopulate the main page with all items that exist in the page
