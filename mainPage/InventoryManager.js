@@ -55,6 +55,10 @@ function createItemConfirm(){
     window.allItems.push(item);
 
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> hbbaker
 function deleteItemPopup() { }
 function deleteItemConfirm() { }
 //used to repopulate the main page with all items that exist in the page
