@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 * {
+    --color-primary: #5603AD;
+    --color-primary-light: #8367C7;
+    --color-secondary: #EE4B6A;
+    --color-dark: #343434;
+    --color-light: #F4EBD9;
+
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
@@ -67,14 +73,59 @@
     border-radius: 20px;
 }
 
+#createItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#createItemMain {
+    font-size: 20px;
+    padding: 10px 50px;
+    background-color: aqua;
+    border: none;
+    border-radius: 20px;
+}
+
 #sortBy {
     background-color: chartreuse;
     grid-area: sortBy;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #sortBy h3 {
     text-align: center;
     padding: 12px;
+}
+
+#sortByBtn {
+    background-color: #F4EBD9;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+}
+
+#sortByBtn:hover #dropDown {
+    display: block;
+}
+
+#dropDown {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    background-color: #F4EBD9;
+    box-shadow: 0px 8px 16px 0px var(--color-dark);
+    z-index: 1;
+}
+
+#dropDown a {
+    color: #343434;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
 #loginSettings {
