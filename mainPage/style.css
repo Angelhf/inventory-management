@@ -159,8 +159,8 @@
     grid-template-areas:
         "itemCreatorTemplate itemCreatorProperties ."
         ". itemCreatorProperties ."
-        ". itemCreatorProperties itemCreatorFavorite"
-        "itemCreatorCancel itemCreatorProperties itemCreatorConfirm"
+        "itemCreatorFavorite itemCreatorProperties ."
+        "itemCreatorConfirm itemCreatorProperties itemCreatorCancel"
 }
 
 #itemCreatorTemplateDiv {
