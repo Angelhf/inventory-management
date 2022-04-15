@@ -15,6 +15,9 @@ function domLoaded() {
         createItemConfirm()
         returnToMain();
     })
+    document.getElementById("toggleEditDelete").addEventListener("click", function () {
+        editDeleteVis();
+    })
 }
 //global array that stores every item
 allItems = [];
@@ -76,7 +79,7 @@ function repopulateMain() {
     }
     for (i = 0; i < window.allItems.length; i++) {
         itemid = 'item' + i;
-        html += '<div id="' + itemid + '"' + ' class="itemContainer"><strong> ' + allItems[i].name + ' </strong><img src="' + allItems[i].image + '"></div>';
+        html += '<div id="' + itemid + '"' + ' class="itemContainer"><input type = "button" class= "edit hidden editDel" id = "edit' + itemid +'" ><strong> ' + allItems[i].name + ' </strong><img src="' + allItems[i].image + '"> <input type = "button" class = "delete hidden editDel" id = "delete' + itemid +'" ></div>';
     }
     //adds the html of every item to the html to repopulate it
     document.querySelector(".itemsMain").innerHTML = html;
@@ -91,6 +94,13 @@ function returnToMain() {
     main.style.display = 'grid';
     console.log(window.allItems);
 
+}
+function editDeleteVis(){
+    editDeletes = document.getElementsByClassName("editDel");
+    for (i = 0; i<editDeletes.length; i++){
+       editDeletes[i].classList.toggle("hidden");
+       editDeletes[i].classList.toggle("visible");
+    }
 }
 
 //End Sprint 1

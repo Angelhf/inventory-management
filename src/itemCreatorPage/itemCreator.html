@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="itemCreator.js"></script>
+    <title>Main Inventory Page</title>
+</head>
+
+<body>
+    <div id="itemCreatorMenu">
+ <!--Displays a list of all of the templates that the user has, and allows the user to choose between them, with the list of properties changing with each template-->
+ <div id="itemCreatorTemplateDiv">
+    Choose Template: <select name="templates" id="itemCreatorTemplate">
+        <option value="Default">Default</option>
+    </select>
+</div>
+<!--The button that cancels the item creation and takes the user back to the main page-->
+<div id="itemCreatorCancelDiv">
+    <button type="button" id="itemCreatorCancel">
+        <strong>Cancel</strong>
+    </button>
+</div>
+<!--All of the item property inputs that the user will have access to-->
+<div id="itemCreatorPropertiesDiv">
+    <div>Name: <input type="text" id="itemCreatorPropertyName" placeholder="Insert Item Name"></div>
+    <div>Image: <input type="file" id="itemCreatorPropertyImage"></div>
+</div>
+<!--Boolean button for favoriting items-->
+<div id="itemCreatorFavoriteDiv">
+    <label for="itemCreatorFavorite">Favorite:</label>
+    <input type="checkbox" name="itemCreatorFavorite" id="itemCreatorFavorite">
+</div>
+<!--button for confirming the creation of an item-->
+<div id="itemCreatorConfirmDiv">
+    <button type="button" id="itemCreatorConfirm">
+        <strong>Create Item</strong>
+    </button>
+</div>
+</div>
+</body>
+</html>

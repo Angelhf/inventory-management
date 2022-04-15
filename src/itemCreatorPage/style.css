@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+    --color-primary: #5603AD;
+    --color-primary-light: #8367C7;
+    --color-secondary: #EE4B6A;
+    --color-dark: #343434;
+    --color-light: #F4EBD9;
+
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+#itemCreatorTemplateDiv {
+    background-color: red;
+    grid-area: itemCreatorTemplate;
+}
+
+#itemCreatorConfirmDiv {
+    background-color: blue;
+    grid-area: itemCreatorConfirm;
+}
+
+#itemCreatorCancelDiv {
+    background-color: green;
+    grid-area: itemCreatorCancel;
+}
+
+#itemCreatorPropertiesDiv {
+    background-color: yellow;
+    grid-area: itemCreatorProperties;
+}
+
+#itemCreatorFavoriteDiv {
+    background-color: pink;
+    grid-area: itemCreatorFavorite;
+}
+#itemCreatorMenu{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 4.5fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr 1fr;
+    grid-template-areas:
+        "itemCreatorTemplate itemCreatorProperties ."
+        ". itemCreatorProperties ."
+        "itemCreatorFavorite itemCreatorProperties ."
+        "itemCreatorConfirm itemCreatorProperties itemCreatorCancel"
+}
+
+
