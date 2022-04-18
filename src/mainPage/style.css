@@ -194,8 +194,8 @@
     grid-template-columns: 0.25fr 1fr 0.25fr;
     grid-template-rows: 1fr 4fr;
     grid-template-areas:
-    "editBtn itemName deleteBtn"
-    ". itemImg .";
+        "editBtn itemName deleteBtn"
+        ". itemImg .";
     align-items: center;
     justify-content: center;
     height: 300px;
@@ -216,28 +216,35 @@
 
 .itemContainer img {
     margin: auto;
+    align-items: center;
+    justify-content: center;
     display: block;
-    max-width: 60%;
-    max-height: 200px;
+    max-width: 90%;
+    max-height: 90%;
     overflow: hidden;
     object-fit: contain;
     grid-area: itemImg;
 }
-iframe{
-    width:100px;
-    height:100px;
-    position:absolute;
+
+iframe {
+    width: 100px;
+    height: 100px;
+    position: absolute;
     z-index: 9999;
 }
+
 .itemContainer .delete {
-    grid-area:deleteBtn;
+    grid-area: deleteBtn;
 }
-.itemContainer .edit{
-    grid-area:editBtn;
+
+.itemContainer .edit {
+    grid-area: editBtn;
 }
-.hidden{
-    display:none;
+
+.hidden {
+    display: none;
 }
-.visible{
-    display:block;
+
+.visible {
+    display: block;
 }
