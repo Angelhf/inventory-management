@@ -71,6 +71,7 @@
     background-color: aqua;
     border: none;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 #createItem {
@@ -85,6 +86,7 @@
     background-color: aqua;
     border: none;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 #sortBy {
