@@ -29,8 +29,15 @@ allGroups = [];
 allTags = [];
 //global variable that holds all templates
 templates = {
-    'Default': []
+    'Default': ["name","image","Default","favorite"],
+    'template': ["name","image","template","favorite","userProperty1","userProperty2"]
 
+}
+function returnAllItems(){
+    return allItems;
+}
+function clearAllItems(){
+    allItems = [];
 }
 //shows the item creator view
 function createItemPopup() {
@@ -41,23 +48,37 @@ function createItemPopup() {
 }
 //goes back to main from the item creator, and adds the item to every global array it needs to be in
 
-function createItemConfirm(){
+function createItemConfirm(properties){
     //the template that the item used
- const template = document.getElementById('itemCreatorTemplate'); 
+  template = templates[properties[2]];
  //creates an item object with each of these traits that all items should have
    var item = {
        //name, image, and template are required for all items, and thus will always be required and stored in every item
-        name: document.getElementById('itemCreatorPropertyName').value,
-        image: URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]),
-        template: template
+        name: properties[0],
+        image: properties[1],
+        template: properties[2],
+        favorite: properties[3]
     }
     //for all of the additional information about each item, it will save and add these to the item object that is created
-    for (i = 0; i < template.length; i++) {
+    for (i = 4; i < template.length; i++) {
         property = template[i];
-        item[property] = document.getElementById('itemCreatorTemplate' + property);
+        item[property] = properties[i]
     }
     //pushes the item into the global array
     window.allItems.push(item);
+    return item;
+}
+function createItemConfirmHelper(){
+    //the template that the item used
+ const template = document.getElementById('itemCreatorTemplate'); 
+var itemProperties = [];
+itemProperties.push(document.getElementById('itemCreatorPropertyName').value);
+itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]));
+itemProperties.push(document.getElementById('itemCreatorTemplate'));
+for (i = 0; i<template.length;i++){
+    itemProperties.push(document.getElementsById('itemCreatorProperty' + property));
+}
+createItemConfirm(itemProperties);
 }
 
 function deleteItemPopup() {
