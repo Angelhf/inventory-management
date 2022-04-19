@@ -12,7 +12,7 @@ function domLoaded() {
     })
     //when the confirm button is clicked in the item creator, create the item, and then return to the main page
     document.getElementById("itemCreatorConfirm").addEventListener("click", function () {
-        createItemConfirm()
+        createItemConfirmHelper()
         returnToMain();
     })
     document.getElementById("toggleEditDelete").addEventListener("click", function () {
@@ -70,12 +70,13 @@ function createItemConfirm(properties){
 }
 function createItemConfirmHelper(){
     //the template that the item used
- const template = document.getElementById('itemCreatorTemplate'); 
+ const template = templates[document.getElementById('itemCreatorTemplate').value]; 
 var itemProperties = [];
 itemProperties.push(document.getElementById('itemCreatorPropertyName').value);
 itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]));
-itemProperties.push(document.getElementById('itemCreatorTemplate'));
-for (i = 0; i<template.length;i++){
+itemProperties.push(document.getElementById('itemCreatorTemplate').value);
+itemProperties.push(document.getElementById('itemCreatorFavorite').value);
+for (i = 4; i<template.length;i++){
     itemProperties.push(document.getElementsById('itemCreatorProperty' + property));
 }
 createItemConfirm(itemProperties);
