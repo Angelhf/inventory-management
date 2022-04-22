@@ -89,9 +89,9 @@ function deleteItemHtml(idnumber){
     const deleteditem = document.getElementById(itemid);
     deleteditem.remove();
     deleteItemArray(idnumber);
+    alert("Item Permanently Deleted.");
 }
 function deleteItemArray(idnumber) {
-    alert("Item Permanently Deleted.");
     allItems.splice(idnumber, 1);
  }
 
@@ -105,7 +105,7 @@ function repopulateMain() {
     }
     for (i = 0; i < window.allItems.length; i++) {
         itemid = 'item' + i;
-        html += '<div id="' + itemid + '"' + ' class="itemContainer"><input type = "button" class= "edit hidden editDel" id = "edit' + itemid +'" onClick="deleteItemPopup('+ i + ', )"><strong> ' + allItems[i].name + ' </strong><img src="' + allItems[i].image + '"> <input type = "button" class = "delete hidden editDel" id = "delete' + itemid +'" ></div>';
+        html += '<div id="' + itemid + '"' + ' class="itemContainer"><input type = "button" class= "edit hidden editDel" id = "edit' + itemid +'"><strong> ' + allItems[i].name + ' </strong><img src="' + allItems[i].image + '"> <input type = "button" class = "delete hidden editDel" id = "delete' + itemid +'" onClick="deleteItemPopup('+ i + ', )"></div>';
     }
     //adds the html of every item to the html to repopulate it
     document.querySelector(".itemsMain").innerHTML = html;
