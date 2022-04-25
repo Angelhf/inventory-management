@@ -193,9 +193,9 @@
     grid-template-rows: 1fr 4fr 1fr 1fr;
     grid-template-areas:
         "itemCreatorTemplate itemCreatorProperties ."
-        ". itemCreatorProperties ."
         "itemCreatorFavorite itemCreatorProperties ."
-        "itemCreatorConfirm itemCreatorProperties itemCreatorCancel"
+        "itemCreatorConfirm itemCreatorProperties ."
+        ". itemCreatorProperties itemCreatorCancel"
 }
 
 #itemCreatorTemplateDiv {
@@ -209,7 +209,7 @@
 #itemCreatorTemplateDiv h3 {
     display: inline-flex;
     margin-left: 5px;
-    font-size: 15px;
+    font-size: 20px;
     color: var(--color-light);
     text-shadow: 2px 2px var(--color-primary);
 }
@@ -220,13 +220,40 @@
 }
 
 #itemCreatorConfirmDiv {
-    background-color: blue;
+    display: flex;
+    background-color: var(--color-dark);
     grid-area: itemCreatorConfirm;
+    align-items: center;
+    justify-content: center;
+}
+
+#itemCreatorConfirm {
+    font-size: 20px;
+    background-color: var(--color-light);
+    box-shadow: 1px 2px var(--color-primary);
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 #itemCreatorCancelDiv {
-    background-color: green;
+    display: flex;
+    background-color: var(--color-dark);
     grid-area: itemCreatorCancel;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#itemCreatorCancel {
+    font-size: 20px;
+    background-color: var(--color-light);
+    box-shadow: 1px 2px var(--color-primary);
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 #itemCreatorPropertiesDiv {
@@ -245,7 +272,7 @@
 }
 
 .itemContainer {
-    background-color: aquamarine;
+    background-color: var(--color-light);
     display: grid;
     grid-template-columns: 0.25fr 1fr 0.25fr;
     grid-template-rows: 1fr 4fr;
@@ -256,7 +283,8 @@
     justify-content: center;
     height: 300px;
     width: 300px;
-    border-color: green;
+    border-color: var(--color-primary);
+    border-radius: 20px;
     border-style: solid;
     border-width: 10px;
     overflow: hidden;
