@@ -15,14 +15,14 @@
     <div class="mainContainer" id="mainView">
 
 
-        <div id="sleuthLogo">Sleuth</div>
+        <div id="sleuthLogo">
+            <img class="logoImg" src="img/SleuthLogo.png" alt="SleuthLogo">
+            <h1>Sleuth</h1>
+        </div>
         <!--Middle section that has all created items-->
         <div class="itemsMain"></div>
-
-
         <!--The sidebar that has various buttons-->
         <div id="sidebar">
-            <h1>Sidebar</h1>
             <!--BTemplate button that takes you to the template creation menu-->
             <div id="template-btn-container">
                 <button type="button" id="template-btn">
@@ -40,7 +40,6 @@
                 <ul>
                     <li id="toggleEditDelete">Edit/Delete</li>
                     <li>Items</li>
-                    <li>Groups</li>
                     <li>Favorites</li>
                 </ul>
             </div>
@@ -60,7 +59,7 @@
         <!--Search bar for searching for certain items-->
         <div id="searchBar">
             <h3>Search Bar</h3>
-            <input type="text" id="search-bar" placeholder="search for an item or a tag">
+            <input type="text" id="search-bar" placeholder="Search for an item">
         </div>
         <!--Button for taking you to the settings page-->
         <div id="loginSettings">Settings/Login</div>
@@ -71,7 +70,8 @@
     <div hidden class="itemCreatorContainer" id="itemCreationWindow">
         <!--Displays a list of all of the templates that the user has, and allows the user to choose between them, with the list of properties changing with each template-->
         <div id="itemCreatorTemplateDiv">
-            Choose Template: <select name="templates" id="itemCreatorTemplate">
+            <h3>Choose Template</h3>
+            <select name="templates" id="itemCreatorTemplate">
                 <option value="Default">Default</option>
             </select>
         </div>

@@ -12,11 +12,7 @@ function domLoaded() {
     })
     //when the confirm button is clicked in the item creator, create the item, and then return to the main page
     document.getElementById("itemCreatorConfirm").addEventListener("click", function () {
-<<<<<<< HEAD
         createItemConfirmHelper();
-=======
-        createItemConfirmHelper()
->>>>>>> aad8289db27faede712e9d4898a3ff03ded707f2
         returnToMain();
     })
     document.getElementById("toggleEditDelete").addEventListener("click", function () {
@@ -68,49 +64,27 @@ function createItemConfirm(properties) {
 }
 function createItemConfirmHelper() {
     //the template that the item used
-<<<<<<< HEAD
-    const template = document.getElementById('itemCreatorTemplate');
+    const template = templates[document.getElementById('itemCreatorTemplate').value];
     var itemProperties = [];
     itemProperties.push(document.getElementById('itemCreatorPropertyName').value);
     itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]));
     itemProperties.push(document.getElementById('itemCreatorTemplate').value);
-    for (i = 0; i < template.length; i++) {
+    itemProperties.push(document.getElementById('itemCreatorFavorite').value);
+    for (i = 4; i < template.length; i++) {
         itemProperties.push(document.getElementsById('itemCreatorProperty' + property));
     }
-    console.log(itemProperties);
     createItemConfirm(itemProperties);
-}
-
-function deleteItemPopup() {
-    if (confirm("Are you sure you want to delete this item?")) {
-        deleteItemConfirm();
-    }
-
-}
-
-function deleteItemConfirm() { }
-=======
- const template = templates[document.getElementById('itemCreatorTemplate').value]; 
-var itemProperties = [];
-itemProperties.push(document.getElementById('itemCreatorPropertyName').value);
-itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]));
-itemProperties.push(document.getElementById('itemCreatorTemplate').value);
-itemProperties.push(document.getElementById('itemCreatorFavorite').value);
-for (i = 4; i<template.length;i++){
-    itemProperties.push(document.getElementsById('itemCreatorProperty' + property));
-}
-createItemConfirm(itemProperties);
 }
 
 function deleteItemPopup(idnumber, itemid) {
     console.log(idnumber);
     console.log(itemid);
-    if(confirm("Are you sure you want to delete this item?")){
+    if (confirm("Are you sure you want to delete this item?")) {
         deleteItemHtml(idnumber, itemid);
     }
 
- }
-function deleteItemHtml(idnumber){
+}
+function deleteItemHtml(idnumber) {
     const itemid = 'item' + idnumber;
     const deleteditem = document.getElementById(itemid);
     deleteditem.remove();
@@ -119,8 +93,7 @@ function deleteItemHtml(idnumber){
 }
 function deleteItemArray(idnumber) {
     allItems.splice(idnumber, 1);
- }
->>>>>>> aad8289db27faede712e9d4898a3ff03ded707f2
+}
 
 //used to repopulate the main page with all items that exist in the page
 function repopulateMain() {
@@ -132,11 +105,7 @@ function repopulateMain() {
     }
     for (i = 0; i < window.allItems.length; i++) {
         itemid = 'item' + i;
-<<<<<<< HEAD
-        html += '<div id="' + itemid + '"' + ' class="itemContainer"><input type = "button" class= "edit hidden editDel" id = "edit' + itemid + '" ><strong> ' + allItems[i].name + ' </strong><img src="' + allItems[i].image + '"> <input type = "button" class = "delete hidden editDel" id = "delete' + itemid + '" ></div>';
-=======
-        html += '<div id="' + itemid + '"' + ' class="itemContainer"><input type = "button" class= "edit hidden editDel" id = "edit' + itemid +'"><strong> ' + allItems[i].name + ' </strong><img src="' + allItems[i].image + '"> <input type = "button" class = "delete hidden editDel" id = "delete' + itemid +'" onClick="deleteItemPopup('+ i + ', )"></div>';
->>>>>>> aad8289db27faede712e9d4898a3ff03ded707f2
+        html += '<div id="' + itemid + '"' + ' class="itemContainer"><input type = "button" class= "edit hidden editDel" id = "edit' + itemid + '"><strong> ' + allItems[i].name + ' </strong><img src="' + allItems[i].image + '"> <input type = "button" class = "delete hidden editDel" id = "delete' + itemid + '" onClick="deleteItemPopup(' + i + ', )"></div>';
     }
     //adds the html of every item to the html to repopulate it
     document.querySelector(".itemsMain").innerHTML = html;
