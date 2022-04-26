@@ -18,6 +18,9 @@ function domLoaded() {
     document.getElementById("toggleEditDelete").addEventListener("click", function () {
         editDeleteVis();
     })
+    document.getElementById("template-btn").addEventListener("click",function(){
+        createTemplatePopup();
+    })
 }
 //global array that stores every item
 allItems = [];
@@ -35,10 +38,15 @@ function clearAllItems(){
 }
 //shows the item creator view
 function createItemPopup() {
+    creator=document.getElementById("itemCreatorContainer");
+    creator.classList.toggle("hidden");
     main = document.getElementById('mainView');
-    main.style.display = 'none'; //creates inline style in the HTML... maybe create css class with grid and assign class
-    creator = document.getElementById('itemCreationWindow');
-    creator.style.display = 'grid'; // same thing as before...
+    main.classList.toggle("hidden");
+
+    //main = document.getElementById('mainView');
+    //main.style.display = 'none'; //creates inline style in the HTML... maybe create css class with grid and assign class
+    //creator = document.getElementById('itemCreationWindow');
+    //creator.style.display = 'grid'; // same thing as before...
 }
 //goes back to main from the item creator, and adds the item to every global array it needs to be in
 
@@ -77,8 +85,6 @@ createItemConfirm(itemProperties);
 }
 
 function deleteItemPopup(idnumber, itemid) {
-    console.log(idnumber);
-    console.log(itemid);
     if(confirm("Are you sure you want to delete this item?")){
         deleteItemHtml(idnumber, itemid);
     }
@@ -105,7 +111,7 @@ function repopulateMain() {
     }
     for (i = 0; i < window.allItems.length; i++) {
         itemid = 'item' + i;
-        html += '<div id="' + itemid + '"' + ' class="itemContainer"><button class= "edit hidden editDel" id = "edit' + itemid +'">Edit</button><strong> ' + allItems[i].name + ' </strong><img src="' + allItems[i].image + '"> <button class = "delete hidden editDel" id = "delete' + itemid +'" onClick="deleteItemPopup('+ i + ', )">delete</button></div>';
+        html += '<div id="' + itemid + '"' + ' class="itemContainer"><button class= "edit hidden editDel" id = "edit' + itemid +'">Edit</button><strong> ' + allItems[i].name + ' </strong><img src="' + allItems[i].image + '"> <button class = "delete hidden editDel" id = "delete' + itemid +'" onClick="deleteItemPopup('+ i + ', )">Delete</button></div>';
     }
     //adds the html of every item to the html to repopulate it
     document.querySelector(".itemsMain").innerHTML = html;
@@ -114,11 +120,13 @@ function repopulateMain() {
 function returnToMain() {
     //always repopulate the main page first.
     repopulateMain();
-    creator = document.getElementById('itemCreationWindow');
-    creator.style.display = 'none'; // same thing as before...
+    templatepage=document.getElementById("templateCreator");
+    templatepage.classList.toggle("hidden",1);
+    creator=document.getElementById("itemCreatorContainer");
+    creator.classList.toggle("hidden",1);
     main = document.getElementById('mainView');
-    main.style.display = 'grid';
-    console.log(window.allItems);
+    main.classList.toggle("hidden",0);
+
 
 }
 function editDeleteVis(){
@@ -129,15 +137,17 @@ function editDeleteVis(){
     }
 }
 
-//End Sprint 1
 
 
 
-function toGroupView() { }
-function createGroup() { }
-function deleteGroup() { }
-function importToGroup() { }
-function toFavorites() { }
-function createTemplatePopup() { }
+
+
+function createTemplatePopup() {
+    templatepage=document.getElementById("templateCreator");
+    templatepage.classList.toggle("hidden");
+    main = document.getElementById('mainView');
+    main.classList.toggle("hidden");
+
+ }
 function createTemplateConfirm() { }
 function deleteTemplate() { }

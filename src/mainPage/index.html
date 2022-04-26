@@ -12,7 +12,7 @@
 
 <body>
     <!--The main area of the webpage that shows all of the items-->
-    <div class="mainContainer" id="mainView">
+    <div class="mainContainer"  id="mainView">
 
 
         <div id="sleuthLogo">Sleuth</div>
@@ -68,7 +68,8 @@
     </div>
 
     <!--Item creator view (hidden by default)-->
-    <div hidden class="itemCreatorContainer" id="itemCreationWindow">
+    <div class="hidden" class="itemCreatorContainer" id="itemCreatorContainer">
+    <div class="itemCreationWindow" id="itemCreationWindow">
         <!--Displays a list of all of the templates that the user has, and allows the user to choose between them, with the list of properties changing with each template-->
         <div id="itemCreatorTemplateDiv">
             Choose Template: <select name="templates" id="itemCreatorTemplate">
@@ -97,7 +98,25 @@
                 <strong>Create Item</strong>
             </button>
         </div>
-        </iframe>
+        </div>
+    </div>
+
+        <div class='hidden' id="templateCreator">
+            <div id="templateNameInput">
+                <input type='text', id="templateName" placeholder="Insert template name">
+            </div>
+            <div id="templateProperties">
+                <button id="templateNewPropertyButton">New property</button>
+            </div>
+            <div>
+                <button id="templateCreate">Create</button>
+            </div>
+            <div>
+                <button id="templateCancel">Cancel</button>
+            </div>
+            
+        </div>
 </body>
+
 
 </html>
