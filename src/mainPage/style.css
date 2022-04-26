@@ -43,6 +43,8 @@
     height: 30px;
     min-width: 200px;
     box-shadow: 1px 2px var(--color-dark);
+    border-radius: 10px;
+    border-color: var(--color-secondary);
     background-color: var(--color-light);
 }
 
@@ -59,6 +61,9 @@
     row-gap: 30px;
     column-gap: 30px;
     overflow: scroll;
+    justify-content: left;
+    padding-left: 60px;
+    padding-top: 10px;
 }
 
 #sidebar {
@@ -111,7 +116,8 @@
 
 #sortBy h3 {
     text-align: center;
-    padding: 12px;
+    font-size: 18px;
+    padding: 10px;
 }
 
 #sortByBtn {
@@ -283,18 +289,20 @@
     justify-content: center;
     height: 300px;
     width: 300px;
-    border-color: var(--color-primary);
+    border-color: var(--color-dark);
     border-radius: 20px;
     border-style: solid;
     border-width: 10px;
     overflow: hidden;
-    margin: 10px 10px;
+    margin: 10px 0px;
+    padding: 0px 10px;
     text-align: justify;
 }
 
-.itemContainer strong {
+.itemContainer h3 {
     padding: 0px 0px;
     text-align: center;
+    justify-content: center;
     grid-area: itemName;
 }
 
@@ -322,11 +330,23 @@ iframe {
 }
 
 .itemContainer .delete {
+    background-color: var(--color-primary);
+    padding: 5px;
+    color: var(--color-light);
+    text-shadow: 0.5px 1px var(--color-dark);
+    border-color: var(--color-dark);
+    border-radius: 5px;
     grid-area: deleteBtn;
 
 }
 
 .itemContainer .edit {
+    background-color: var(--color-primary);
+    padding: 5px;
+    color: var(--color-light);
+    text-shadow: 0.5px 1px var(--color-dark);
+    border-color: var(--color-dark);
+    border-radius: 5px;
     grid-area: editBtn;
 }
 

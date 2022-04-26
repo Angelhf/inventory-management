@@ -105,7 +105,7 @@ function repopulateMain() {
     }
     for (i = 0; i < window.allItems.length; i++) {
         itemid = 'item' + i;
-        html += '<div id="' + itemid + '"' + ' class="itemContainer"><input type = "button" class= "edit hidden editDel" id = "edit' + itemid + '"><strong> ' + allItems[i].name + ' </strong><img src="' + allItems[i].image + '"> <input type = "button" class = "delete hidden editDel" id = "delete' + itemid + '" onClick="deleteItemPopup(' + i + ', )"></div>';
+        html += '<div id="' + itemid + '"' + ' class="itemContainer"><button class= "edit hidden editDel" id = "edit' + itemid + '">Edit</button><h3> ' + allItems[i].name + ' </h3><img src="' + allItems[i].image + '"> <button class = "delete hidden editDel" id = "delete' + itemid + '" onClick="deleteItemPopup(' + i + ', )">Delete</button></div>';
     }
     //adds the html of every item to the html to repopulate it
     document.querySelector(".itemsMain").innerHTML = html;
