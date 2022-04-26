@@ -12,7 +12,7 @@ function domLoaded() {
     })
     //when the confirm button is clicked in the item creator, create the item, and then return to the main page
     document.getElementById("itemCreatorConfirm").addEventListener("click", function () {
-        createItemConfirmHelper()
+        createItemConfirmHelper();
         returnToMain();
     })
     document.getElementById("toggleEditDelete").addEventListener("click", function () {
@@ -26,14 +26,14 @@ function domLoaded() {
 allItems = [];
 //global variable that holds all templates
 templates = {
-    'Default': ["name","image","Default","favorite"],
-    'template': ["name","image","template","favorite","userProperty1","userProperty2"]
+    'Default': ["name", "image", "Default", "favorite"],
+    'template': ["name", "image", "template", "favorite", "userProperty1", "userProperty2"]
 
 }
-function returnAllItems(){
+function returnAllItems() {
     return allItems;
 }
-function clearAllItems(){
+function clearAllItems() {
     allItems = [];
 }
 //shows the item creator view
@@ -50,12 +50,12 @@ function createItemPopup() {
 }
 //goes back to main from the item creator, and adds the item to every global array it needs to be in
 
-function createItemConfirm(properties){
+function createItemConfirm(properties) {
     //the template that the item used
-  template = templates[properties[2]];
- //creates an item object with each of these traits that all items should have
-   var item = {
-       //name, image, and template are required for all items, and thus will always be required and stored in every item
+    template = templates[properties[2]];
+    //creates an item object with each of these traits that all items should have
+    var item = {
+        //name, image, and template are required for all items, and thus will always be required and stored in every item
         name: properties[0],
         image: properties[1],
         template: properties[2],
@@ -70,18 +70,18 @@ function createItemConfirm(properties){
     window.allItems.push(item);
     return item;
 }
-function createItemConfirmHelper(){
+function createItemConfirmHelper() {
     //the template that the item used
- const template = templates[document.getElementById('itemCreatorTemplate').value]; 
-var itemProperties = [];
-itemProperties.push(document.getElementById('itemCreatorPropertyName').value);
-itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]));
-itemProperties.push(document.getElementById('itemCreatorTemplate').value);
-itemProperties.push(document.getElementById('itemCreatorFavorite').value);
-for (i = 4; i<template.length;i++){
-    itemProperties.push(document.getElementsById('itemCreatorProperty' + property));
-}
-createItemConfirm(itemProperties);
+    const template = templates[document.getElementById('itemCreatorTemplate').value];
+    var itemProperties = [];
+    itemProperties.push(document.getElementById('itemCreatorPropertyName').value);
+    itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]));
+    itemProperties.push(document.getElementById('itemCreatorTemplate').value);
+    itemProperties.push(document.getElementById('itemCreatorFavorite').value);
+    for (i = 4; i < template.length; i++) {
+        itemProperties.push(document.getElementsById('itemCreatorProperty' + property));
+    }
+    createItemConfirm(itemProperties);
 }
 
 function deleteItemPopup(idnumber, itemid) {
@@ -89,8 +89,8 @@ function deleteItemPopup(idnumber, itemid) {
         deleteItemHtml(idnumber, itemid);
     }
 
- }
-function deleteItemHtml(idnumber){
+}
+function deleteItemHtml(idnumber) {
     const itemid = 'item' + idnumber;
     const deleteditem = document.getElementById(itemid);
     deleteditem.remove();
@@ -99,7 +99,7 @@ function deleteItemHtml(idnumber){
 }
 function deleteItemArray(idnumber) {
     allItems.splice(idnumber, 1);
- }
+}
 
 //used to repopulate the main page with all items that exist in the page
 function repopulateMain() {
@@ -111,7 +111,7 @@ function repopulateMain() {
     }
     for (i = 0; i < window.allItems.length; i++) {
         itemid = 'item' + i;
-        html += '<div id="' + itemid + '"' + ' class="itemContainer"><button class= "edit hidden editDel" id = "edit' + itemid +'">Edit</button><strong> ' + allItems[i].name + ' </strong><img src="' + allItems[i].image + '"> <button class = "delete hidden editDel" id = "delete' + itemid +'" onClick="deleteItemPopup('+ i + ', )">Delete</button></div>';
+        html += '<div id="' + itemid + '"' + ' class="itemContainer"><button class= "edit hidden editDel" id = "edit' + itemid + '">Edit</button><h3> ' + allItems[i].name + ' </h3><img src="' + allItems[i].image + '"> <button class = "delete hidden editDel" id = "delete' + itemid + '" onClick="deleteItemPopup(' + i + ', )">Delete</button></div>';
     }
     //adds the html of every item to the html to repopulate it
     document.querySelector(".itemsMain").innerHTML = html;
@@ -129,11 +129,11 @@ function returnToMain() {
 
 
 }
-function editDeleteVis(){
+function editDeleteVis() {
     editDeletes = document.getElementsByClassName("editDel");
-    for (i = 0; i<editDeletes.length; i++){
-       editDeletes[i].classList.toggle("hidden");
-       editDeletes[i].classList.toggle("visible");
+    for (i = 0; i < editDeletes.length; i++) {
+        editDeletes[i].classList.toggle("hidden");
+        editDeletes[i].classList.toggle("visible");
     }
 }
 

@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 * {
-    --color-primary: #5603AD;
-    --color-primary-light: #8367C7;
-    --color-secondary: #EE4B6A;
-    --color-dark: #343434;
-    --color-light: #F4EBD9;
+    --color-primary: #32746D;
+    --color-secondary: #9EC5AB;
+    --color-dark: #104F55;
+    --color-light: #FFEAEE;
+    --color-secondary-dark: #F4D6CC;
 
     margin: 0;
     padding: 0;
@@ -13,6 +13,7 @@
 }
 
 .mainContainer {
+    background-color: var(--color-primary);
     display: grid;
     height: 100vh;
     grid-template-columns: 0.5fr 0.25fr 1.25fr 1.25fr 0.25fr 0.5fr;
@@ -25,23 +26,34 @@
 }
 
 #searchBar {
-    background-color: orange;
+    background-color: var(--color-primary);
     display: inline-flex;
+    align-items: center;
     padding: 10px 10px;
     grid-area: search;
 }
 
 #searchBar h3 {
     padding: 3px 10px;
+    color: var(--color-light);
+    text-shadow: 1px 2px var(--color-dark);
 }
 
 #search-bar {
     height: 30px;
     min-width: 200px;
+    box-shadow: 1px 2px var(--color-dark);
+    border-radius: 10px;
+    border-color: var(--color-secondary);
+    background-color: var(--color-light);
+}
+
+#search-bar::placeholder {
+    text-indent: 5px;
 }
 
 .itemsMain {
-    background-color: purple;
+    background-color: var(--color-secondary);
     grid-area: itemHolder;
     display: grid;
     grid-template-columns: repeat(auto-fit, 320px);
@@ -49,10 +61,13 @@
     row-gap: 30px;
     column-gap: 30px;
     overflow: scroll;
+    justify-content: left;
+    padding-left: 60px;
+    padding-top: 10px;
 }
 
 #sidebar {
-    background-color: red;
+    background-color: var(--color-dark);
     grid-area: sidebar;
 }
 
@@ -67,8 +82,9 @@
 
 #template-btn {
     font-size: 20px;
-    padding: 10px 50px;
-    background-color: aqua;
+    background-color: var(--color-light);
+    box-shadow: 1px 2px var(--color-primary);
+    padding: 10px 30px;
     border: none;
     border-radius: 20px;
     cursor: pointer;
@@ -83,14 +99,15 @@
 #createItemMain {
     font-size: 20px;
     padding: 10px 50px;
-    background-color: aqua;
+    background-color: var(--color-light);
+    box-shadow: 1px 2px var(--color-primary);
     border: none;
     border-radius: 20px;
     cursor: pointer;
 }
 
 #sortBy {
-    background-color: chartreuse;
+    background-color: var(--color-primary);
     grid-area: sortBy;
     display: flex;
     align-items: center;
@@ -99,15 +116,17 @@
 
 #sortBy h3 {
     text-align: center;
-    padding: 12px;
+    font-size: 18px;
+    padding: 10px;
 }
 
 #sortByBtn {
-    background-color: #F4EBD9;
+    background-color: var(--color-light);
     padding: 8px;
     font-size: 12px;
     border: none;
     border-radius: 10px;
+    box-shadow: 1px 2px var(--color-dark);
 }
 
 #sortByBtn:hover #dropDown {
@@ -131,7 +150,7 @@
 }
 
 #loginSettings {
-    background-color: green;
+    background-color: var(--color-primary);
     grid-area: loginSettings;
 }
 
@@ -143,14 +162,33 @@
     text-align: center;
     margin: 50px 20px;
     color: black;
-    background-color: aqua;
+    background-color: var(--color-light);
+    box-shadow: 1px 2px var(--color-primary);
     border-radius: 20px;
     cursor: pointer;
 }
 
 #sleuthLogo {
-    background-color: cyan;
+    background-color: var(--color-dark);
     grid-area: sleuth;
+    display: inline-flex;
+    align-items: center;
+    justify-content: left;
+    max-width: 300px;
+    max-height: 150px;
+}
+
+.logoImg {
+    max-width: 60px;
+    margin: 20px 20px;
+    box-shadow: 2px 2px 0px 1px var(--color-secondary);
+}
+
+
+#sleuthLogo h1 {
+    margin: 1rem;
+    color: var(--color-light);
+    text-shadow: 2px 2px var(--color-primary);
 }
 
 .itemCreationWindow{
@@ -160,27 +198,75 @@
     grid-template-rows: 1fr 4fr 1fr 1fr;
     grid-template-areas:
         "itemCreatorTemplate itemCreatorProperties ."
-        ". itemCreatorProperties ."
         "itemCreatorFavorite itemCreatorProperties ."
-        "itemCreatorConfirm itemCreatorProperties itemCreatorCancel"
+        "itemCreatorConfirm itemCreatorProperties ."
+        ". itemCreatorProperties itemCreatorCancel"
 }
 #itemCreatorTemplateDiv {
-    background-color: red;
+    display: flex;
+    background-color: var(--color-dark);
+    align-items: center;
+    justify-content: center;
     grid-area: itemCreatorTemplate;
 }
 
+#itemCreatorTemplateDiv h3 {
+    display: inline-flex;
+    margin-left: 5px;
+    font-size: 20px;
+    color: var(--color-light);
+    text-shadow: 2px 2px var(--color-primary);
+}
+
+#itemCreatorTemplate {
+    padding: 5px;
+    margin-left: 5px;
+}
+
 #itemCreatorConfirmDiv {
-    background-color: blue;
+    display: flex;
+    background-color: var(--color-dark);
     grid-area: itemCreatorConfirm;
+    align-items: center;
+    justify-content: center;
+}
+
+#itemCreatorConfirm {
+    font-size: 20px;
+    background-color: var(--color-light);
+    box-shadow: 1px 2px var(--color-primary);
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 #itemCreatorCancelDiv {
-    background-color: green;
+    display: flex;
+    background-color: var(--color-dark);
     grid-area: itemCreatorCancel;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#itemCreatorCancel {
+    font-size: 20px;
+    background-color: var(--color-light);
+    box-shadow: 1px 2px var(--color-primary);
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 #itemCreatorPropertiesDiv {
-    background-color: yellow;
+    background-color: var(--color-primary);
+    text-shadow: 1px 2px var(--color-dark);
+    font-size: 30px;
+    color: var(--color-light);
+    margin: 30px;
+    padding: 30px;
     grid-area: itemCreatorProperties;
 }
 
@@ -190,7 +276,7 @@
 }
 
 .itemContainer {
-    background-color: aquamarine;
+    background-color: var(--color-light);
     display: grid;
     grid-template-columns: 0.25fr 1fr 0.25fr;
     grid-template-rows: 1fr 4fr;
@@ -201,17 +287,20 @@
     justify-content: center;
     height: 300px;
     width: 300px;
-    border-color: green;
+    border-color: var(--color-dark);
+    border-radius: 20px;
     border-style: solid;
     border-width: 10px;
     overflow: hidden;
-    margin: 10px 10px;
+    margin: 10px 0px;
+    padding: 0px 10px;
     text-align: justify;
 }
 
-.itemContainer strong {
+.itemContainer h3 {
     padding: 0px 0px;
     text-align: center;
+    justify-content: center;
     grid-area: itemName;
 }
 
@@ -227,6 +316,10 @@
     grid-area: itemImg;
 }
 
+#footer {
+    background-color: var(--color-dark);
+}
+
 iframe {
     width: 100px;
     height: 100px;
@@ -235,10 +328,23 @@ iframe {
 }
 
 .itemContainer .delete {
+    background-color: var(--color-primary);
+    padding: 5px;
+    color: var(--color-light);
+    text-shadow: 0.5px 1px var(--color-dark);
+    border-color: var(--color-dark);
+    border-radius: 5px;
     grid-area: deleteBtn;
+
 }
 
 .itemContainer .edit {
+    background-color: var(--color-primary);
+    padding: 5px;
+    color: var(--color-light);
+    text-shadow: 0.5px 1px var(--color-dark);
+    border-color: var(--color-dark);
+    border-radius: 5px;
     grid-area: editBtn;
 }
 
