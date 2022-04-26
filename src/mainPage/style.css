@@ -173,7 +173,7 @@
 }
 
 .logoImg {
-    max-width: 70px;
+    max-width: 60px;
     margin: 20px 20px;
     box-shadow: 2px 2px 0px 1px var(--color-secondary);
 }
@@ -323,6 +323,7 @@ iframe {
 
 .itemContainer .delete {
     grid-area: deleteBtn;
+
 }
 
 .itemContainer .edit {
