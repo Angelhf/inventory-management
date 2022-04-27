@@ -37,8 +37,13 @@ function domLoaded() {
 allItems = [];
 //global variable that holds all templates
 templates = {
-    'Default': ["name", "image", "Default", "favorite"],
-    'template': ["name", "image", "template", "favorite", "userProperty1", "userProperty2"]
+    'Default': ["name", "image", "favorite"],
+    'template': ["name", "image", "favorite", "userProperty1", "userProperty2"]
+}
+template = {
+    name: "Text",
+    image: "Image",
+    favorite: "Boolean"
 }
 
 //ITEM CREATOR FUNCTIONS
@@ -51,9 +56,13 @@ function clearAllItems() {
 }
 //shows the item creator view
 function createItemPopup() {
+    //gets the item creator div
     creator=document.getElementById("itemCreatorContainer");
+    //toggles it from hidden to visible
     creator.classList.toggle("hidden");
+    //gets the main page div
     main = document.getElementById('mainView');
+    //toggles the main page div from visible to hidden
     main.classList.toggle("hidden");
 }
 //goes back to main from the item creator, and adds the item to every global array it needs to be in
@@ -63,14 +72,13 @@ function createItemJavascript(properties) {
     template = templates[properties[2]];
     //creates an item object with each of these traits that all items should have
     var item = {
-        //name, image, and template are required for all items, and thus will always be required and stored in every item
+        //name, image, and favorite are required for all items, and thus will always be required and stored in every item
         name: properties[0],
         image: properties[1],
-        template: properties[2],
-        favorite: properties[3]
+        favorite: properties[2]
     }
     //for all of the additional information about each item, it will save and add these to the item object that is created
-    for (i = 4; i < template.length; i++) {
+    for (i = 3; i < template.length; i++) {
         property = template[i];
         item[property] = properties[i]
     }
@@ -100,7 +108,7 @@ function deleteItemPopup(idnumber, itemid) {
 }
 //MAIN PAGE FUNCTIONS
 
-function deleteItemHtml(idnumber) {
+function deleteItemHTML(idnumber) {
     const itemid = 'item' + idnumber;
     const deleteditem = document.getElementById(itemid);
     deleteditem.remove();
@@ -121,7 +129,7 @@ function repopulateMain() {
     }
     for (i = 0; i < window.allItems.length; i++) {
         itemid = 'item' + i;
-        html += '<div id="' + itemid + '"' + ' class="itemContainer"><button class= "edit hidden editDel" id = "edit' + itemid + '">Edit</button><h3> ' + allItems[i].name + ' </h3><img src="' + allItems[i].image + '"> <button class = "delete hidden editDel" id = "delete' + itemid + '" onClick="deleteItemPopup(' + i + ', )">Delete</button></div>';
+        html += '<div id="' + itemid + '"' + ' class="itemContainer"><button class= "edit hidden editDel" id = "edit' + itemid + '">Edit</button><h3> ' + allItems[i].name + ' </h3><img src="' + allItems[i].image + '"> <button class = "delete hidden editDel" id = "delete' + itemid + '" onClick="deleteItemHTML(' + i + ', )">Delete</button></div>';
     }
     //adds the html of every item to the html to repopulate it
     document.querySelector(".itemsMain").innerHTML = html;
@@ -161,9 +169,15 @@ function newTemplatePropertyInput(){
 var templateProperties= document.getElementById("templateProperties");
 var optionsdiv= document.createElement("div");
 optionsdiv.id="templatePropInputDiv";
-var name = document.createElement("input");
-var confirm = document.createElement("button");
 templateProperties.appendChild(optionsdiv);
+var name = document.createElement("input");
+name.id="templatePropertyName";
+var confirm = document.createElement("button");
+confirm.id="templatePropertyConfirm";
+confirm.type="button";
+confirm.innerHTML="confirm";
+confirm.text="confirm";
+confirm.onclick = function(){newTemplatePropertyHTML()};
 var elements=document.createElement("select");
 elements.id="templatePropertyType";
 optionsdiv.appendChild(name);
@@ -179,12 +193,37 @@ for(var i=0; i<properties.length;i++){
 }
 var createPropButton = document.getElementById("templateNewPropertyButton");
 templateProperties.insertBefore(optionsdiv, createPropButton);
+var propbutton= document.getElementById("templateNewPropertyButton");
+propbutton.classList.toggle("hidden", 1);
 }
 function newTemplatePropertyHTML(){
+    //getting all necessary elements
+    var name = document.getElementById("templatePropertyName");
+    var type = document.getElementById("templatePropertyType");
+    var confirmbtn = document.getElementById("templatePropertyConfirm");
+    var div = document.getElementById("templatePropInputDiv");
+    var propbutton= document.getElementById("templateNewPropertyButton");
+    var nameval = name.value;
+    var typeval = type.value
+    //storing values in javascript
+    newTemplatePropertyJavascript(nameval, typeval);
+    //deletion of unnecessary parts
+    name.remove();
+    type.remove();
+    confirmbtn.remove();
+    div.remove();
+    //repopulation of page
+    newdiv=document.createElement("div");
+    newdiv.className = "templateProperty";
+    newname = document.createElement("div");
+    newname.innerhtml=nameval;
+    
+
+    propbutton.classList.toggle("hidden", 0);
 
 }
-function newTemplatePropertyJavascript(){
-
+function newTemplatePropertyJavascript(name, type){
+window.template[name] = type;
 }
 function createTemplateHTML() { }
 function createTemplateJavascript(){

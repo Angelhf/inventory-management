@@ -413,7 +413,15 @@ font-size: 20px;
     display:grid;
     grid-template-columns: 1fr 1fr;
 }
-
+#templatePropertyConfirm{
+    font-size: 10px;
+    background-color: var(--color-light);
+    box-shadow: 1px 2px var(--color-primary);
+    padding: 5px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
 /*
 "Global" CSS
 */
