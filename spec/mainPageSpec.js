@@ -10,7 +10,7 @@ describe("creating item", () =>{
             //name, image, and template are required for all items, and thus will always be required and stored in every item
          }
            test = Object.create(item);
-        test = createItemConfirm(properties);
+        test = createItemJavascript(properties);
     })
     it("Has correct name", ()=>{
         expect(test.name).toEqual("itemName");
@@ -44,7 +44,7 @@ describe("deleting item", ()=>{
             //name, image, and template are required for all items, and thus will always be required and stored in every item
          }
            test = Object.create(item);
-        test = createItemConfirm(properties);
+        test = createItemJavascript(properties);
 
 
         template = ["name","image","template","favorite","userProperty1","userProperty2"];
@@ -53,7 +53,7 @@ describe("deleting item", ()=>{
             //name, image, and template are required for all items, and thus will always be required and stored in every item
          }
            test = Object.create(item);
-        test = createItemConfirm(properties);
+        test = createItemJavascript(properties);
 
 
         template = ["name","image","template","favorite","userProperty1","userProperty2"];
@@ -62,7 +62,7 @@ describe("deleting item", ()=>{
             //name, image, and template are required for all items, and thus will always be required and stored in every item
          }
            test = Object.create(item);
-        test = createItemConfirm(properties);
+        test = createItemJavascript(properties);
     })  
     it("changes the array size when deleted from spot 0", ()=>{
         deleteItemArray(0);

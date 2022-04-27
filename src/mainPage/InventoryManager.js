@@ -12,7 +12,7 @@ function domLoaded() {
     })
     //when the confirm button is clicked in the item creator, create the item, and then return to the main page
     document.getElementById("itemCreatorConfirm").addEventListener("click", function () {
-        createItemConfirmHelper();
+        createItemHTML();
         returnToMain();
     })
     document.getElementById("toggleEditDelete").addEventListener("click", function () {
@@ -21,15 +21,28 @@ function domLoaded() {
     document.getElementById("template-btn").addEventListener("click",function(){
         createTemplatePopup();
     })
+    document.getElementById("templateCancel").addEventListener("click", function () {
+        returnToMain();
+    })
+    document.getElementById("templateCreate").addEventListener("click", function () {
+
+        returnToMain();
+    })
+    document.getElementById("templateNewPropertyButton").addEventListener("click", function () {
+        newTemplatePropertyInput();
+    })
 }
+//GLOBAL VARIABLES
 //global array that stores every item
 allItems = [];
 //global variable that holds all templates
 templates = {
     'Default': ["name", "image", "Default", "favorite"],
     'template': ["name", "image", "template", "favorite", "userProperty1", "userProperty2"]
-
 }
+
+//ITEM CREATOR FUNCTIONS
+
 function returnAllItems() {
     return allItems;
 }
@@ -42,15 +55,10 @@ function createItemPopup() {
     creator.classList.toggle("hidden");
     main = document.getElementById('mainView');
     main.classList.toggle("hidden");
-
-    //main = document.getElementById('mainView');
-    //main.style.display = 'none'; //creates inline style in the HTML... maybe create css class with grid and assign class
-    //creator = document.getElementById('itemCreationWindow');
-    //creator.style.display = 'grid'; // same thing as before...
 }
 //goes back to main from the item creator, and adds the item to every global array it needs to be in
 
-function createItemConfirm(properties) {
+function createItemJavascript(properties) {
     //the template that the item used
     template = templates[properties[2]];
     //creates an item object with each of these traits that all items should have
@@ -70,7 +78,7 @@ function createItemConfirm(properties) {
     window.allItems.push(item);
     return item;
 }
-function createItemConfirmHelper() {
+function createItemHTML() {
     //the template that the item used
     const template = templates[document.getElementById('itemCreatorTemplate').value];
     var itemProperties = [];
@@ -81,7 +89,7 @@ function createItemConfirmHelper() {
     for (i = 4; i < template.length; i++) {
         itemProperties.push(document.getElementsById('itemCreatorProperty' + property));
     }
-    createItemConfirm(itemProperties);
+    createItemJavascript(itemProperties);
 }
 
 function deleteItemPopup(idnumber, itemid) {
@@ -90,6 +98,8 @@ function deleteItemPopup(idnumber, itemid) {
     }
 
 }
+//MAIN PAGE FUNCTIONS
+
 function deleteItemHtml(idnumber) {
     const itemid = 'item' + idnumber;
     const deleteditem = document.getElementById(itemid);
@@ -116,11 +126,10 @@ function repopulateMain() {
     //adds the html of every item to the html to repopulate it
     document.querySelector(".itemsMain").innerHTML = html;
 }
-
 function returnToMain() {
     //always repopulate the main page first.
     repopulateMain();
-    templatepage=document.getElementById("templateCreator");
+    templatepage=document.getElementById("templateContainer");
     templatepage.classList.toggle("hidden",1);
     creator=document.getElementById("itemCreatorContainer");
     creator.classList.toggle("hidden",1);
@@ -140,14 +149,44 @@ function editDeleteVis() {
 
 
 
-
+//TEMPLATE PAGE FUNCTIONS
 
 function createTemplatePopup() {
-    templatepage=document.getElementById("templateCreator");
+    templatepage=document.getElementById("templateContainer");
     templatepage.classList.toggle("hidden");
     main = document.getElementById('mainView');
     main.classList.toggle("hidden");
-
  }
-function createTemplateConfirm() { }
+function newTemplatePropertyInput(){
+var templateProperties= document.getElementById("templateProperties");
+var optionsdiv= document.createElement("div");
+optionsdiv.id="templatePropInputDiv";
+var name = document.createElement("input");
+var confirm = document.createElement("button");
+templateProperties.appendChild(optionsdiv);
+var elements=document.createElement("select");
+elements.id="templatePropertyType";
+optionsdiv.appendChild(name);
+optionsdiv.appendChild(elements);
+optionsdiv.appendChild(confirm);
+
+var properties = ["Text","Image","Boolean","LongText"]
+for(var i=0; i<properties.length;i++){
+    var option = document.createElement("option");
+    option.value= properties[i];
+    option.text = properties[i];
+    elements.appendChild(option);
+}
+var createPropButton = document.getElementById("templateNewPropertyButton");
+templateProperties.insertBefore(optionsdiv, createPropButton);
+}
+function newTemplatePropertyHTML(){
+
+}
+function newTemplatePropertyJavascript(){
+
+}
+function createTemplateHTML() { }
+function createTemplateJavascript(){
+}
 function deleteTemplate() { }

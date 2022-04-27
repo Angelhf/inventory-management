@@ -101,20 +101,29 @@
         </div>
     </div>
 
-        <div class='hidden' id="templateCreator">
-            <div id="templateNameInput">
-                <input type='text', id="templateName" placeholder="Insert template name">
+        <div class='hidden' id="templateContainer">
+            <div id="templatePage">
+                <div id="templateNameInput">
+                    <input type='text', id="templateName" placeholder="Insert template name">
+                </div>
+                <div id="templateProperties">
+                    <div class="templateProperty">
+                        <div>Name</div>
+                        <div>Lorem ipsum dolor</div>
+                    </div>
+                    <div class="templateProperty">
+                        <Div>Image</Div>
+                        <Div><img class ="templateImage" src="img/Example.jpg" alt="Example image" ></Div>
+                    </div>
+                    <button id="templateNewPropertyButton">New property</button>
+                </div>
+                <div id="templateCreateContainer">
+                    <button id="templateCreate">Create</button>
+                </div>
+                <div id="templateCancelContainer">
+                    <button id="templateCancel">Cancel</button>
+                </div>
             </div>
-            <div id="templateProperties">
-                <button id="templateNewPropertyButton">New property</button>
-            </div>
-            <div>
-                <button id="templateCreate">Create</button>
-            </div>
-            <div>
-                <button id="templateCancel">Cancel</button>
-            </div>
-            
         </div>
 </body>
 
