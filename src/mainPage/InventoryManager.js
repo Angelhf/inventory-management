@@ -69,6 +69,7 @@ function createItemPopup() {
         option.text = Object.keys(templates)[i];
         templateMenu.appendChild(option);
     }
+    changeTemplate();
     //gets the item creator div
     creator=document.getElementById("itemCreatorContainer");
     //toggles it from hidden to visible
@@ -138,10 +139,10 @@ function createItemHTML() {
     const template = templates[document.getElementById('itemCreatorTemplate').value];
     var itemProperties = [];
     itemProperties.push(template);
-    itemProperties.push(document.getElementById('itemCreatorPropertyName').value);
-    itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]));
-    itemProperties.push(document.getElementById('itemCreatorFavorite').value);
-    for (i = 3; i < Object.keys(template).length; i++) {
+    //itemProperties.push(document.getElementById('itemCreatorPropertyName').value);
+    //itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]));
+    //itemProperties.push(document.getElementById('itemCreatorFavorite').value);
+    for (i = 0; i < Object.keys(template).length; i++) {
         property = Object.keys(template)[i];
         if(template[Object.keys(template)[i]] == "Image"){
             itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorProperty" + property).files[0]));
