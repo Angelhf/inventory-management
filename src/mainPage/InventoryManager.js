@@ -10,6 +10,9 @@ function domLoaded() {
     document.getElementById("itemCreatorCancel").addEventListener("click", function () {
         returnToMain();
     })
+    document.getElementById("itemCreatorTemplate").addEventListener("change", function(){
+        changeTemplate();
+    })
     //when the confirm button is clicked in the item creator, create the item, and then return to the main page
     document.getElementById("itemCreatorConfirm").addEventListener("click", function () {
         createItemHTML();
@@ -37,7 +40,7 @@ function domLoaded() {
 allItems = [];
 //global variable that holds all templates
 templates = {
-    'Default': {'name':"Text", 'image':"Image", 'favorite':"boolean"},
+    'Default': {'Name':"Text", 'Image':"Image", 'Favorite':"Boolean"},
 }
 template = {
     Name: "Text",
@@ -56,6 +59,7 @@ function clearAllItems() {
 //shows the item creator view
 function createItemPopup() {
     var templateMenu = document.getElementById('itemCreatorTemplate');
+    templateMenu.selectedIndex = null;
     while(templateMenu.firstChild){
         templateMenu.removeChild(templateMenu.lastChild);
     }
@@ -76,21 +80,55 @@ function createItemPopup() {
 }
 //goes back to main from the item creator, and adds the item to every global array it needs to be in
 
+function changeTemplate(){
+    var templatechoice = document.getElementById('itemCreatorTemplate').value;
+    var tem = templates[templatechoice]; 
+    var properties = document.getElementById('itemCreatorPropertiesDiv');
+    while(properties.firstChild){
+        properties.removeChild(properties.lastChild);
+    }
+    for(var i = 0; i<Object.keys(tem).length;i++){
+        var newdiv = document.createElement("div");
+        newdiv.id="itemCreatorProperty" +Object.keys(tem)[i]+"Div";
+        var input = document.createElement("input");
+        if(tem[Object.keys(tem)[i]]=="Text"){
+            input.type ="text";
+            input.placeholder = "Insert Item " + Object.keys(tem)[i];
+        } else if(tem[Object.keys(tem)[i]]=="Image"){
+            input.type ="file";
+        } else if (tem[Object.keys(tem)[i]]=="Boolean"){
+            input.type ="checkbox";
+        } else if(tem[Object.keys(tem)[i]]=="Paragraph"){
+            input.type ="text";
+            input.className="description";
+            input.placeholder = "Insert Item" + Object.keys(tem)[i];
+        }
+        input.id = "itemCreatorProperty" +Object.keys(tem)[i];
+        newdiv.innerHTML = Object.keys(tem)[i];
+        properties.appendChild(newdiv);
+        
+        newdiv.appendChild(input);
+    }
+}
+
 function createItemJavascript(properties) {
     //the template that the item used
-    template = templates[properties[2]];
+    var template = properties[0];
     //creates an item object with each of these traits that all items should have
     var item = {
         //name, image, and favorite are required for all items, and thus will always be required and stored in every item
-        name: properties[0],
-        image: properties[1],
-        favorite: properties[2]
+        name: properties[1],
+        image: properties[2],
+        favorite: properties[3]
     }
     //for all of the additional information about each item, it will save and add these to the item object that is created
-    for (i = 3; i < template.length; i++) {
-        property = template[i];
-        item[property] = properties[i]
+    if (Object.keys(template).length>3){
+   for (i = 3; i < Object.keys(template).length; i++) {
+       var j = i+1
+        property = Object.keys(template)[i];
+        item[property] = properties[j]
     }
+}
     //pushes the item into the global array
     window.allItems.push(item);
     return item;
@@ -99,14 +137,20 @@ function createItemHTML() {
     //the template that the item used
     const template = templates[document.getElementById('itemCreatorTemplate').value];
     var itemProperties = [];
+    itemProperties.push(template);
     itemProperties.push(document.getElementById('itemCreatorPropertyName').value);
     itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]));
-    itemProperties.push(document.getElementById('itemCreatorTemplate').value);
     itemProperties.push(document.getElementById('itemCreatorFavorite').value);
-    for (i = 4; i < template.length; i++) {
-        itemProperties.push(document.getElementsById('itemCreatorProperty' + property));
+    for (i = 3; i < Object.keys(template).length; i++) {
+        property = Object.keys(template)[i];
+        if(template[Object.keys(template)[i]] == "Image"){
+            itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorProperty" + property).files[0]));
+        } else{
+        itemProperties.push(document.getElementById('itemCreatorProperty' + property).value);
+        }
     }
     createItemJavascript(itemProperties);
+    console.log(window.allItems);
 }
 
 function deleteItemPopup(idnumber, itemid) {
@@ -115,6 +159,11 @@ function deleteItemPopup(idnumber, itemid) {
     }
 
 }
+
+
+
+
+
 //MAIN PAGE FUNCTIONS
 
 function deleteItemHTML(idnumber) {
@@ -280,7 +329,6 @@ function createTemplateHTML() {
     templateinput.remove();
     }
     for(var i = 3;  i <Object.keys(window.template).length; i++){
-        console.log("property" + i);
         property=document.getElementById("property" + i);
         property.remove();
     }
@@ -290,7 +338,6 @@ function createTemplateHTML() {
 }
 function createTemplateJavascript(templateName){
     window.templates[templateName] = (template);
-    console.log(window.templates);
 
 }
 function resetTemplate(){

@@ -352,6 +352,10 @@ ITEM CREATOR PAGE
     background-color: pink;
     grid-area: itemCreatorFavorite;
 }
+.description{
+    width: 300px;
+
+}
 /*
 Template page CSS
 */
