@@ -62,7 +62,11 @@
             <input type="text" id="search-bar" placeholder="Search for an item">
         </div>
         <!--Button for taking you to the settings page-->
-        <div id="loginSettings">Settings/Login</div>
+        <div id="loginSettings">
+            <form action="/logout?_method=DELETE" method="POST">
+                <button type="submit">Log Out</button>
+            </form>
+        </div>
         <div id="footer">Footer</div>
     </div>
 
@@ -70,7 +74,7 @@
     <div hidden class="itemCreatorContainer" id="itemCreationWindow">
         <!--Displays a list of all of the templates that the user has, and allows the user to choose between them, with the list of properties changing with each template-->
         <div id="itemCreatorTemplateDiv">
-            <h3>Choose Template</h3>
+            <h3>Choose Template: </h3>
             <select name="templates" id="itemCreatorTemplate">
                 <option value="Default">Default</option>
             </select>
