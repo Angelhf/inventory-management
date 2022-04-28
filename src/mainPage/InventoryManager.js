@@ -22,11 +22,11 @@ function domLoaded() {
         createTemplatePopup();
     })
     document.getElementById("templateCancel").addEventListener("click", function () {
+        createTemplateHTML();
         returnToMain();
     })
     document.getElementById("templateCreate").addEventListener("click", function () {
-
-        returnToMain();
+        createTemplateHTML();
     })
     document.getElementById("templateNewPropertyButton").addEventListener("click", function () {
         newTemplatePropertyInput();
@@ -37,13 +37,12 @@ function domLoaded() {
 allItems = [];
 //global variable that holds all templates
 templates = {
-    'Default': ["name", "image", "favorite"],
-    'template': ["name", "image", "favorite", "userProperty1", "userProperty2"]
+    'Default': {'name':"Text", 'image':"Image", 'favorite':"boolean"},
 }
 template = {
-    name: "Text",
-    image: "Image",
-    favorite: "Boolean"
+    Name: "Text",
+    Image: "Image",
+    Favorite: "Boolean"
 }
 
 //ITEM CREATOR FUNCTIONS
@@ -56,6 +55,16 @@ function clearAllItems() {
 }
 //shows the item creator view
 function createItemPopup() {
+    var templateMenu = document.getElementById('itemCreatorTemplate');
+    while(templateMenu.firstChild){
+        templateMenu.removeChild(templateMenu.lastChild);
+    }
+    for(var i=0; i<Object.keys(window.templates).length;i++){
+        var option = document.createElement("option");
+        option.value= Object.keys(templates)[i];
+        option.text = Object.keys(templates)[i];
+        templateMenu.appendChild(option);
+    }
     //gets the item creator div
     creator=document.getElementById("itemCreatorContainer");
     //toggles it from hidden to visible
@@ -184,7 +193,7 @@ optionsdiv.appendChild(name);
 optionsdiv.appendChild(elements);
 optionsdiv.appendChild(confirm);
 
-var properties = ["Text","Image","Boolean","LongText"]
+var properties = ["Text","Image","Boolean","Paragraph"]
 for(var i=0; i<properties.length;i++){
     var option = document.createElement("option");
     option.value= properties[i];
@@ -193,39 +202,102 @@ for(var i=0; i<properties.length;i++){
 }
 var createPropButton = document.getElementById("templateNewPropertyButton");
 templateProperties.insertBefore(optionsdiv, createPropButton);
-var propbutton= document.getElementById("templateNewPropertyButton");
-propbutton.classList.toggle("hidden", 1);
+var propButton= document.getElementById("templateNewPropertyButton");
+propButton.classList.toggle("hidden", 1);
 }
 function newTemplatePropertyHTML(){
     //getting all necessary elements
     var name = document.getElementById("templatePropertyName");
     var type = document.getElementById("templatePropertyType");
-    var confirmbtn = document.getElementById("templatePropertyConfirm");
+    var confirmBtn = document.getElementById("templatePropertyConfirm");
     var div = document.getElementById("templatePropInputDiv");
-    var propbutton= document.getElementById("templateNewPropertyButton");
+    var propButton= document.getElementById("templateNewPropertyButton");
+    var templateProperties= document.getElementById("templateProperties");
     var nameval = name.value;
+    if(nameval==""){
+        alert("Please put in a template name");
+        return;
+        }
+    if(window.template.hasOwnProperty(nameval)){
+        window.alert("Cannot have two properties with the same name");
+        return;
+    }
     var typeval = type.value
     //storing values in javascript
     newTemplatePropertyJavascript(nameval, typeval);
     //deletion of unnecessary parts
     name.remove();
     type.remove();
-    confirmbtn.remove();
+    confirmBtn.remove();
     div.remove();
     //repopulation of page
     newdiv=document.createElement("div");
     newdiv.className = "templateProperty";
+    var newname = document.createElement("div");
+    var example;
+    if(typeval == "Text"){
+        example = document.createElement("div");
+        example.innerHTML = "Lorem ipsum dolor"
+    } else if (typeval =="Image"){
+        example = document.createElement("img");
+        example.src = "img/Example.jpg";
+        example.alt ="Example Image";
+        example.className="templateImage";
+    } else if (typeval =="Boolean"){
+        example = document.createElement("input");
+        example.type="checkbox";
+    } else if (typeval== "Paragraph"){
+        example = document.createElement("p");
+        example.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        example.className = "templateDescription";
+    }
+    var id = Object.keys(window.template).length -1;
+    newdiv.id = "property" +(id);
+    templateProperties.appendChild(newdiv);
+    templateProperties.insertBefore(newdiv, propButton);
+
     newname = document.createElement("div");
-    newname.innerhtml=nameval;
-    
+    newname.innerHTML=nameval;
+    newdiv.appendChild(newname);
+    newdiv.appendChild(example);
 
-    propbutton.classList.toggle("hidden", 0);
-
+    propButton.classList.toggle("hidden", 0);
 }
 function newTemplatePropertyJavascript(name, type){
 window.template[name] = type;
 }
-function createTemplateHTML() { }
-function createTemplateJavascript(){
+function createTemplateHTML() {
+    var templatename= document.getElementById("templateName").value;
+    var propButton= document.getElementById("templateNewPropertyButton");
+    var templateinput =  document.getElementById("templatePropInputDiv");
+    propButton.classList.toggle("hidden",0);
+    if(templatename==""){
+        alert("Please put in a template name");
+        return;
+        }
+    createTemplateJavascript(templatename);
+    if(templateinput!==null){
+    templateinput.remove();
+    }
+    for(var i = 3;  i <Object.keys(window.template).length; i++){
+        console.log("property" + i);
+        property=document.getElementById("property" + i);
+        property.remove();
+    }
+    document.getElementById("templateName").value = '';
+    resetTemplate();
+    returnToMain();
+}
+function createTemplateJavascript(templateName){
+    window.templates[templateName] = (template);
+    console.log(window.templates);
+
+}
+function resetTemplate(){
+    window.template = {
+        name: "Text",
+        image: "Image",
+        favorite: "Boolean"
+    }
 }
 function deleteTemplate() { }

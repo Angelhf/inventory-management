@@ -422,6 +422,9 @@ font-size: 20px;
     border-radius: 20px;
     cursor: pointer;
 }
+.templateDescription{
+    max-width: 300px;
+}
 /*
 "Global" CSS
 */
