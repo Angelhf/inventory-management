@@ -186,7 +186,7 @@ function repopulateMain() {
     }
     for (i = 0; i < window.allItems.length; i++) {
         itemid = 'item' + i;
-        html += '<div id="' + itemid + '"' + ' class="itemContainer"><button class= "edit hidden editDel" id = "edit' + itemid + '">Edit</button><h3> ' + allItems[i].name + ' </h3><img src="' + allItems[i].image + '"> <button class = "delete hidden editDel" id = "delete' + itemid + '" onClick="deleteItemHTML(' + i + ', )">Delete</button></div>';
+        html += '<div id="' + itemid + '"' + ' class="itemContainer"><button class= "edit hidden editDel" id = "edit' + itemid + '">Edit</button><h3> ' + allItems[i].name + ' </h3><button class ="imageButton" onClick ="fullItemView(' + i + ')"><img src="' + allItems[i].image + '"></button><button class = "delete hidden editDel" id = "delete' + itemid + '" onClick="deleteItemHTML(' + i + ' )">Delete</button></div>';
     }
     //adds the html of every item to the html to repopulate it
     document.querySelector(".itemsMain").innerHTML = html;
@@ -210,7 +210,12 @@ function editDeleteVis() {
         editDeletes[i].classList.toggle("visible");
     }
 }
-
+function fullItemView(idnumber){
+    var itemView = document.getElementById("fullItemView");
+    var mainView = document.getElementById("mainView");
+    mainView.appendChild(itemView);
+    
+    }
 
 
 
@@ -341,9 +346,10 @@ function createTemplateJavascript(templateName){
 }
 function resetTemplate(){
     window.template = {
-        name: "Text",
-        image: "Image",
-        favorite: "Boolean"
+        Name: "Text",
+        Image: "Image",
+        Favorite: "Boolean"
     }
 }
-function deleteTemplate() { }
+
+

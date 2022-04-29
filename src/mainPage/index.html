@@ -62,7 +62,11 @@
             <input type="text" id="search-bar" placeholder="Search for an item">
         </div>
         <!--Button for taking you to the settings page-->
-        <div id="loginSettings">Settings/Login</div>
+        <div id="loginSettings">
+            <form action="/logout?_method=DELETE" method="POST">
+                <button type="submit">Log Out</button>
+            </form>
+        </div>
         <div id="footer">Footer</div>
     </div>
 
@@ -71,7 +75,7 @@
     <div class="itemCreationWindow" id="itemCreationWindow">
         <!--Displays a list of all of the templates that the user has, and allows the user to choose between them, with the list of properties changing with each template-->
         <div id="itemCreatorTemplateDiv">
-            <h3>Choose Template</h3>
+            <h3>Choose Template: </h3>
             <select name="templates" id="itemCreatorTemplate">
             </select>
         </div>
@@ -83,8 +87,6 @@
         </div>
         <!--All of the item property inputs that the user will have access to-->
         <div id="itemCreatorPropertiesDiv">
-            <div id ="itemCreatorPropertyNameDiv">Name: <input type="text" id="itemCreatorPropertyName" placeholder="Insert Item Name"></div>
-            <div id ="itemCreatorPropertyImageDiv">Image: <input type="file" id="itemCreatorPropertyImage"></div>
         </div>
         <!--button for confirming the creation of an item-->
         <div id="itemCreatorConfirmDiv">
@@ -121,6 +123,13 @@
                 <div id="templateCancelContainer">
                     <button id="templateCancel">Cancel</button>
                 </div>
+            </div>
+        </div>
+        <div id="fullItemView" class ="hidden">
+            <div id = "fullItemViewProperties">
+            </div>
+            <div id ="fullItemViewCloseContainer">
+                <button id =fullItemViewClose>X</button>
             </div>
         </div>
 </body>
