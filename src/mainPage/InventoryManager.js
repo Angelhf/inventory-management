@@ -139,9 +139,7 @@ function createItemHTML() {
     const template = templates[document.getElementById('itemCreatorTemplate').value];
     var itemProperties = [];
     itemProperties.push(template);
-    //itemProperties.push(document.getElementById('itemCreatorPropertyName').value);
-    //itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorPropertyImage").files[0]));
-    //itemProperties.push(document.getElementById('itemCreatorFavorite').value);
+
     for (i = 0; i < Object.keys(template).length; i++) {
         property = Object.keys(template)[i];
         if(template[Object.keys(template)[i]] == "Image"){
@@ -151,7 +149,7 @@ function createItemHTML() {
         }
     }
     createItemJavascript(itemProperties);
-    console.log(window.allItems);
+
 }
 
 function deleteItemPopup(idnumber, itemid) {
