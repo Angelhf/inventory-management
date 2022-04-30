@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner v4.0.1</title>
+
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-4.0.1/jasmine_favicon.png">
+  <link rel="stylesheet" href="lib/jasmine-4.0.1/jasmine.css">
+
+  <script src="lib/jasmine-4.0.1/jasmine.js"></script>
+  <script src="lib/jasmine-4.0.1/jasmine-html.js"></script>
+  <script src="lib/jasmine-4.0.1/boot0.js"></script>
+  <script src="lib/jasmine-4.0.1/boot1.js"></script>
+  <script src="src/mainPage/InventoryManager.js"></script>
+  <script src="spec/mainPageSpec.js"></script>
+  <!--<script src="src/loginPage/main.js"></script>
+  <script src="spec/loginPageSpec.js"></script>-->
+
+</head>
+
+<body>
+  <div hidden>
+  <!--The main area of the webpage that shows all of the items-->
+  <div class="mainContainer" id="mainView">
+
+
+      <div id="sleuthLogo">Sleuth</div>
+      <!--Middle section that has all created items-->
+      <div class="itemsMain"></div>
+
+
+      <!--The sidebar that has various buttons-->
+      <div id="sidebar">
+          <h1>Sidebar</h1>
+          <!--BTemplate button that takes you to the template creation menu-->
+          <div id="template-btn-container">
+              <button type="button" id="template-btn">
+                  <strong>Create Template</strong>
+              </button>
+          </div>
+          <!--Create item button that takes you to the item Creation Window-->
+          <div id="createItem">
+              <button type="button" id="createItemMain">
+                  <strong>Create Item</strong>
+              </button>
+          </div>
+          <!--Unfinished sidebar functions-->
+          <div class="sidebar-fns">
+              <ul>
+                  <li id = "toggleEditDelete">Edit/Delete</li>
+                  <li>Items</li>
+                  <li>Groups</li>
+                  <li>Favorites</li>
+              </ul>
+          </div>
+      </div>
+      <!--Button that will allow you to sort by certain attributes-->
+      <div id="sortBy">
+          <button id="sortByBtn">
+              <h3>Sort By</h3>
+              <div id="dropDown">
+                  <a href="#">A</a>
+                  <a href="#">B</a>
+                  <a href="#">C</a>
+              </div>
+
+          </button>
+      </div>
+      <!--Search bar for searching for certain items-->
+      <div id="searchBar">
+          <h3>Search Bar</h3>
+          <input type="text" id="search-bar" placeholder="search for an item or a tag">
+      </div>
+      <!--Button for taking you to the settings page-->
+      <div id="loginSettings">Settings/Login</div>
+      <div id="footer">Footer</div>
+  </div>
+
+  <!--Item creator view (hidden by default)-->
+  <div hidden class="itemCreatorContainer" id="itemCreationWindow">
+      <!--Displays a list of all of the templates that the user has, and allows the user to choose between them, with the list of properties changing with each template-->
+      <div id="itemCreatorTemplateDiv">
+          Choose Template: <select name="templates" id="itemCreatorTemplate">
+              <option value="Default">Default</option>
+          </select>
+      </div>
+      <!--The button that cancels the item creation and takes the user back to the main page-->
+      <div id="itemCreatorCancelDiv">
+          <button type="button" id="itemCreatorCancel">
+              <strong>Cancel</strong>
+          </button>
+      </div>
+      <!--All of the item property inputs that the user will have access to-->
+      <div id="itemCreatorPropertiesDiv">
+          <div>Name: <input type="text" id="itemCreatorPropertyName" placeholder="Insert Item Name"></div>
+          <div>Image: <input type="file" id="itemCreatorPropertyImage"></div>
+      </div>
+      <!--Boolean button for favoriting items-->
+      <div id="itemCreatorFavoriteDiv">
+          <label for="itemCreatorFavorite">Favorite:</label>
+          <input type="checkbox" name="itemCreatorFavorite" id="itemCreatorFavorite">
+      </div>
+      <!--button for confirming the creation of an item-->
+      <div id="itemCreatorConfirmDiv">
+          <button type="button" id="itemCreatorConfirm">
+              <strong>Create Item</strong>
+          </button>
+      </div>
+  </iframe>
+</div>
+</body>
+
+</html>
+
+</html>
