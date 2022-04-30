@@ -54,18 +54,23 @@ MAIN PAGE CSS
     text-indent: 5px;
 }
 
-.itemsMain {
-    background-color: var(--color-secondary);
+#itemsMainContainer{
     grid-area: itemHolder;
+    background-color: var(--color-secondary);
+
+}
+#itemsMain {
+    background-color: var(--color-secondary);
     display: grid;
     grid-template-columns: repeat(auto-fit, 320px);
     grid-template-rows: repeat(auto-fit, 320px);
-    row-gap: 30px;
+    row-gap: 10px;
     column-gap: 30px;
     overflow: scroll;
     justify-content: left;
     padding-left: 60px;
-    padding-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
 }
 
 #sidebar {
@@ -276,7 +281,48 @@ iframe {
     border-radius: 5px;
     grid-area: editBtn;
 }
+/*
+*FULL ITEM VIEW AREA
+*/
+#fullItemViewContainer{
+    min-height:100%;
+    min-width:1000px;
+    grid-area: itemHolder;
+    background-color: var(--color-secondary);
+}
+#fullItemView{
+    display: grid;
+    
+    grid-template-columns: 1fr 4.5fr 1fr;
+    grid-template-rows: 1fr 4fr;
+    grid-template-areas:
+    ". fullItemProperties fullItemClose"
+    ". fullItemProperties .";
+    min-height:100%;
+    min-width:100%;
+}
+#fullItemViewProperties{
+display: grid;
+grid-area:fullItemProperties;
+overflow:scroll;
+}
+#fullItemViewCloseContainer{
+grid-area:fullItemClose;
+}
+.description{
+    width: 300px;
 
+}
+.propertyDiv{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: auto;
+    width: auto;
+}
+.propertyDiv img{
+    max-width: 90%;
+    max-height: 90%;
+}
 /*
 ITEM CREATOR PAGE
 */
@@ -365,10 +411,7 @@ ITEM CREATOR PAGE
     background-color: pink;
     grid-area: itemCreatorFavorite;
 }
-.description{
-    width: 300px;
 
-}
 /*
 Template page CSS
 */
@@ -451,6 +494,7 @@ font-size: 20px;
 
 .hidden {
     display: none;
+    background-size:0.0;
 }
 
 .visible {

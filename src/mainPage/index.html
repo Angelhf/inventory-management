@@ -10,7 +10,7 @@
     <title>Main Inventory Page</title>
 </head>
 
-<body>
+<body id="body">
     <!--The main area of the webpage that shows all of the items-->
     <div class="mainContainer"  id="mainView">
 
@@ -20,7 +20,9 @@
             <h1>Sleuth</h1>
         </div>
         <!--Middle section that has all created items-->
-        <div class="itemsMain"></div>
+        <div id =itemsMainContainer>
+        <div id="itemsMain"></div>
+        </div>
         <!--The sidebar that has various buttons-->
         <div id="sidebar">
             <!--Template button that takes you to the template creation menu-->
@@ -125,11 +127,13 @@
                 </div>
             </div>
         </div>
-        <div id="fullItemView" class ="hidden">
-            <div id = "fullItemViewProperties">
-            </div>
-            <div id ="fullItemViewCloseContainer">
-                <button id =fullItemViewClose>X</button>
+        <div id =fullItemViewContainer class="hidden">
+            <div id="fullItemView">
+                <div id = "fullItemViewProperties">
+                </div>
+                <div id ="fullItemViewCloseContainer">
+                    <button id =fullItemViewClose>X</button>
+                </div>
             </div>
         </div>
 </body>

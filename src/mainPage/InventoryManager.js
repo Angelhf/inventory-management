@@ -34,6 +34,9 @@ function domLoaded() {
     document.getElementById("templateNewPropertyButton").addEventListener("click", function () {
         newTemplatePropertyInput();
     })
+    document.getElementById("fullItemViewClose").addEventListener("click", function(){
+        toItemsView();
+    })
 }
 //GLOBAL VARIABLES
 //global array that stores every item
@@ -114,13 +117,15 @@ function changeTemplate(){
 
 function createItemJavascript(properties) {
     //the template that the item used
-    var template = properties[0];
+    var templatename = properties[0];
+    var template =templates[templatename]
     //creates an item object with each of these traits that all items should have
     var item = {
         //name, image, and favorite are required for all items, and thus will always be required and stored in every item
-        name: properties[1],
-        image: properties[2],
-        favorite: properties[3]
+        Template: properties[0],
+        Name: properties[1],
+        Image: properties[2],
+        Favorite: properties[3]
     }
     //for all of the additional information about each item, it will save and add these to the item object that is created
     if (Object.keys(template).length>3){
@@ -138,8 +143,7 @@ function createItemHTML() {
     //the template that the item used
     const template = templates[document.getElementById('itemCreatorTemplate').value];
     var itemProperties = [];
-    itemProperties.push(template);
-
+    itemProperties.push(document.getElementById('itemCreatorTemplate').value);
     for (i = 0; i < Object.keys(template).length; i++) {
         property = Object.keys(template)[i];
         if(template[Object.keys(template)[i]] == "Image"){
@@ -166,8 +170,8 @@ function deleteItemPopup(idnumber, itemid) {
 //MAIN PAGE FUNCTIONS
 
 function deleteItemHTML(idnumber) {
-    const itemid = 'item' + idnumber;
-    const deleteditem = document.getElementById(itemid);
+    var itemid = 'item' + idnumber;
+    var deleteditem = document.getElementById(itemid);
     deleteditem.remove();
     deleteItemArray(idnumber);
     alert("Item Permanently Deleted.");
@@ -178,18 +182,46 @@ function deleteItemArray(idnumber) {
 
 //used to repopulate the main page with all items that exist in the page
 function repopulateMain() {
-    //creates an empty html string that will be used to insert each item into the main view
-    html = "";
+    var itemsMain = document.getElementById("itemsMain");
+    while(itemsMain.firstChild){
+        itemsMain.removeChild(itemsMain.lastChild);
+    }
     //if there are no items, don't do anything
-    if (allItems.length == 0) {
-        return;
+    for (var i = 0; i < window.allItems.length; i++) {
+        var itemid = 'item' + i;
+        var itemDiv = document.createElement("div");
+        var deletebtn = document.createElement("button");
+        var editbtn = document.createElement("button");
+        var itemname = document.createTextNode(allItems[i].Name);
+        var itembtn = document.createElement("button");
+        var itemimg = document.createElement("img");
+        var deletename = document.createTextNode("Delete")
+        var editname = document.createTextNode("Edit")
+        var nameheader =document.createElement("h3");
+        //IDs and Classes
+        itemDiv.id = itemid;
+        deletebtn.id = 'delete' + itemid;
+        editbtn.id = 'edit' +itemid;
+        //SRCs
+        itemimg.src = allItems[i].Image;
+        //OnClicks
+        const id = i;
+        deletebtn.addEventListener("click",function(){deleteItemHTML(id)});
+        itembtn.addEventListener("click",function(){fullItemView(id)});
+        //Classes
+        itemDiv.className = "itemContainer";
+        deletebtn.classList.add('delete','hidden','editDel');
+        editbtn.classList.add('edit','hidden','editDel');
+        itembtn.className="imageButton";
+        //Appending them all into the itemDiv
+        itembtn.appendChild(itemimg);
+        nameheader.appendChild(itemname);
+        editbtn.appendChild(editname);
+        deletebtn.appendChild(deletename);
+        itemDiv.append(itembtn,deletebtn,editbtn,nameheader)
+        //appending the item div into the main view
+        document.getElementById("itemsMain").appendChild(itemDiv);
     }
-    for (i = 0; i < window.allItems.length; i++) {
-        itemid = 'item' + i;
-        html += '<div id="' + itemid + '"' + ' class="itemContainer"><button class= "edit hidden editDel" id = "edit' + itemid + '">Edit</button><h3> ' + allItems[i].name + ' </h3><button class ="imageButton" onClick ="fullItemView(' + i + ')"><img src="' + allItems[i].image + '"></button><button class = "delete hidden editDel" id = "delete' + itemid + '" onClick="deleteItemHTML(' + i + ' )">Delete</button></div>';
-    }
-    //adds the html of every item to the html to repopulate it
-    document.querySelector(".itemsMain").innerHTML = html;
 }
 function returnToMain() {
     //always repopulate the main page first.
@@ -198,8 +230,12 @@ function returnToMain() {
     templatepage.classList.toggle("hidden",1);
     creator=document.getElementById("itemCreatorContainer");
     creator.classList.toggle("hidden",1);
+    itemView = document.getElementById("fullItemViewContainer");
+    itemView.classList.toggle("hidden",1);
     main = document.getElementById('mainView');
     main.classList.toggle("hidden",0);
+    itemsMain = document.getElementById("itemsMainContainer");
+    itemsMain.classList.toggle("hidden",0);
 
 
 }
@@ -211,10 +247,88 @@ function editDeleteVis() {
     }
 }
 function fullItemView(idnumber){
-    var itemView = document.getElementById("fullItemView");
+    var itemView = document.getElementById("fullItemViewContainer");
     var mainView = document.getElementById("mainView");
+    var itemsMain = document.getElementById("itemsMainContainer");
+    var itemProps = document.getElementById("fullItemViewProperties");
+    itemView.classList.toggle("hidden",0);
+    itemsMain.classList.toggle("hidden",1);
     mainView.appendChild(itemView);
-    
+    var usedItem = window.allItems[idnumber];
+    var templatename = usedItem.Template;
+    var template = templates[templatename];
+    while(itemProps.firstChild){
+        itemProps.removeChild(itemProps.lastChild);
+    }
+    for(var i = 0; i<Object.keys(template).length;i++){
+        var propertynameval = Object.keys(template)[i];
+        var propertydiv = document.createElement("div");
+        var name = document.createTextNode(propertynameval);
+        var propertyname = document.createElement("h4");
+        propertyname.appendChild(name);
+        var propertyvalue;
+        var editbtn = document.createElement("button");
+        var propertytype = template[Object.keys(template)[i]];
+        property = Object.keys(template)[i];
+        var value = usedItem[Object.keys(usedItem)[i + 1]];
+        propertydiv.appendChild(propertyname);
+        if(propertytype == "Text"){
+            propertyvalue = document.createElement("div");
+            propertyvalue.class = "itemText"
+            var text = document.createTextNode(value)
+            propertyvalue.appendChild(text);
+        } else if(propertytype == "Image"){
+            propertyvalue = document.createElement("img");
+            propertyvalue.src =value;
+        } else if(propertytype == "Boolean"){
+            propertyvalue = document.createElement("div");
+            if(value == "on"){
+                var boolean =document.createTextNode("False");
+                propertyvalue.appendChild(boolean)
+            } else{
+                var boolean =document.createTextNode("True");
+                propertyvalue.appendChild(boolean)
+            }
+        } else if(propertytype == "Paragraph"){
+            propertyvalue = document.createElement("div");
+            propertyvalue.class = description;
+            text = document.createTextNode(value)
+            propertyvalue.appendChild(text);
+
+        }
+        var editname = document.createTextNode("Edit")
+        editbtn.appendChild(editname);
+        propertyvalue.id = Object.keys(template)[i] + "value";
+        propertydiv.id =    Object.keys(template)[i] +"div";
+        propertyname.id =   Object.keys(template)[i] +"name";
+        editbtn.id =    Object.keys(template)[i] + "edit";
+        propertydiv.className = "propertyDiv";
+        const j = i;
+        editbtn.addEventListener("click", editPropertyCreateInput(Object.keys(template)[j]));
+        propertydiv.appendChild(propertyname);
+        propertydiv.appendChild(propertyvalue);
+        propertydiv.appendChild(editbtn);
+        itemProps.appendChild(propertydiv);
+
+    }
+}
+    function editPropertyCreateInput(templateid){
+
+    }
+    function editPropertyConfirmInput(){
+
+    }
+    function editPropertiesConfirmHTML(itemid){
+
+    }
+    function editPropertiesConfirmJavascript(itemid){
+
+    }
+    function toItemsView(){
+        var itemView = document.getElementById("fullItemViewContainer");
+    var itemsMain = document.getElementById("itemsMainContainer");
+    itemView.classList.toggle("hidden",1);
+    itemsMain.classList.toggle("hidden",0);
     }
 
 
