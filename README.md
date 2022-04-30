@@ -1,3 +1,0 @@
-# inventory-management
-
-Changing README
