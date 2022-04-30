@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/homepage.css">
+    <link rel="icon" href="assets/SleuthLogo.png">
+    <script src="js/inventoryManager.js"></script>
+    <title>Main Inventory Page</title>
+</head>
+
+<body id="body">
+    <!--The main area of the webpage that shows all of the items-->
+    <div class="mainContainer" id="mainView">
+
+
+        <div id="sleuthLogo">
+            <img class="logoImg" src="assets/SleuthLogo.png" alt="SleuthLogo">
+            <h1>Sleuth</h1>
+        </div>
+        <!--Middle section that has all created items-->
+        <div id=itemsMainContainer>
+            <div id="itemsMain"></div>
+        </div>
+        <!--The sidebar that has various buttons-->
+        <div id="sidebar">
+            <!--Template button that takes you to the template creation menu-->
+            <div id="template-btn-container">
+                <button type="button" id="template-btn">
+                    <strong>Create Template</strong>
+                </button>
+            </div>
+            <!--Create item button that takes you to the item Creation Window-->
+            <div id="createItem">
+                <button type="button" id="createItemMain">
+                    <strong>Create Item</strong>
+                </button>
+            </div>
+            <!--Unfinished sidebar functions-->
+            <div class="sidebar-fns">
+                <ul>
+                    <li id="toggleEditDelete">Edit/Delete</li>
+                    <li>Items</li>
+                    <li>Favorites</li>
+                </ul>
+            </div>
+        </div>
+        <!--Search bar for searching for certain items-->
+        <div id="searchBar">
+            <h3>Search Bar</h3>
+            <input type="text" id="search-bar" placeholder="Search for an item">
+        </div>
+        <!--Button for taking you to the settings page-->
+        <div id="loginSettings">
+            <form action="/logout?_method=DELETE" method="POST">
+                <button type="submit" id="template-btn">Log Out</button>
+            </form>
+        </div>
+        <div id="space"></div>
+    </div>
+
+    <!--Item creator view (hidden by default)-->
+    <div class="hidden" class="itemCreatorContainer" id="itemCreatorContainer">
+        <div class="itemCreationWindow" id="itemCreationWindow">
+            <!--Displays a list of all of the templates that the user has, and allows the user to choose between them, with the list of properties changing with each template-->
+            <div id="itemCreatorTemplateDiv">
+                <h3>Choose Template: </h3>
+                <select name="templates" id="itemCreatorTemplate">
+                </select>
+            </div>
+            <!--The button that cancels the item creation and takes the user back to the main page-->
+            <div id="itemCreatorCancelDiv">
+                <button type="button" id="itemCreatorCancel">
+                    <strong>Cancel</strong>
+                </button>
+            </div>
+            <!--All of the item property inputs that the user will have access to-->
+            <div id="itemCreatorPropertiesDiv">
+            </div>
+            <!--button for confirming the creation of an item-->
+            <div id="itemCreatorConfirmDiv">
+                <button type="button" id="itemCreatorConfirm">
+                    <strong>Create Item</strong>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class='hidden' id="templateContainer">
+        <div id="templatePage">
+            <div id="templateNameInput">
+                <input type='text' , id="templateName" placeholder="Insert template name">
+            </div>
+            <div id="templateProperties">
+                <div class="templateProperty" id="property0">
+                    <div class="templatePropertyName">Name</div>
+                    <div class="templatePropertyText">Lorem ipsum dolor</div>
+                </div>
+                <div class="templateProperty" id="property1">
+                    <Div class="templatePropertyName">Image</Div>
+                    <Div><img class="templateImage" src="img/Example.jpg" alt="Example image"></Div>
+                </div>
+                <div class="templateProperty" id="property2">
+                    <Div class="templatePropertyName">Favorite</Div>
+                    <Div><input type="checkbox"></Div>
+                </div>
+                <button id="templateNewPropertyButton">New property</button>
+            </div>
+            <div id="templateCreateContainer">
+                <button id="templateCreate">Create</button>
+            </div>
+            <div id="templateCancelContainer">
+                <button id="templateCancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id=fullItemViewContainer class="hidden">
+        <div id="fullItemView">
+            <div id="fullItemViewProperties">
+            </div>
+            <div id="fullItemViewCloseContainer">
+                <button id=fullItemViewClose>X</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
