@@ -70,6 +70,7 @@ MAIN PAGE CSS
 #itemsMainContainer {
     grid-area: itemHolder;
     background-color: var(--color-secondary);
+    padding: 10px 20px;
 }
 
 #search-bar:focus::placeholder {
@@ -355,11 +356,55 @@ iframe {
     display: grid;
     grid-area: fullItemProperties;
     overflow: scroll;
+    background-color: var(--color-secondary);
+    border-radius: 20px;
+    padding: 10px;
 }
 
+.propertyDiv {
+    background-color: white;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+    color: black;
+    text-shadow: 0px 1px var(--color-primary);
+    box-shadow: 0px 3px gray;
+    transition: .5s;
+}
+
+.propertyDiv:hover {
+    margin: 5px;
+    box-shadow: 0px 6px var(--color-primary);
+}
+
+
+
 #fullItemViewCloseContainer {
+    padding-top: 10px;
     grid-area: fullItemClose;
 }
+
+#fullItemViewClose {
+    background-color: red;
+    color: white;
+    text-shadow: 0px 2px black;
+    border-radius: 5px;
+    font-size: 18px;
+    border-width: 5px;
+    cursor: pointer;
+    outline: none;
+    padding: 5px;
+    transition: .5s;
+}
+
+#fullItemViewClose:hover {
+    padding: 10px;
+}
+
+
 
 .description {
     width: 300px;
@@ -493,11 +538,30 @@ Template page CSS
 }
 
 #templateNameInput {
+    display: flex;
     grid-area: templateNameInput;
+    align-items: center;
+    justify-content: center;
+}
+
+#templateName {
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 2px var(--color-dark);
+    transition: .5s;
+}
+
+#templateName:focus {
+    font-size: 18px;
+    box-shadow: 0px 4px var(--color-dark);
+    outline: none;
 }
 
 #templateProperties {
     grid-area: templateProperties;
+    overflow: scroll;
     background-color: white;
     border-radius: 20px;
     text-shadow: 0px 1px var(--color-secondary);
@@ -526,7 +590,10 @@ Template page CSS
 }
 
 #templateCreateContainer {
+    display: flex;
     grid-area: templateCreateBtn;
+    align-items: center;
+    justify-content: center;
 }
 
 #templateCreate {
@@ -537,10 +604,19 @@ Template page CSS
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    transition: .5s;
+}
+
+#templateCreate:hover {
+    font-size: 22px;
+    box-shadow: 1px 4px var(--color-primary);
 }
 
 #templateCancelContainer {
     grid-area: templateCancelBtn;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #templateCancel {
@@ -551,6 +627,12 @@ Template page CSS
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    transition: .5s;
+}
+
+#templateCancel:hover {
+    font-size: 22px;
+    box-shadow: 1px 4px var(--color-primary);
 }
 
 .templateImage {
@@ -564,13 +646,61 @@ Template page CSS
 }
 
 #templatePropertyConfirm {
-    font-size: 10px;
-    background-color: var(--color-light);
-    box-shadow: 1px 2px var(--color-primary);
+    font-size: 12px;
+    color: white;
+    text-shadow: 0px 1px var(--color-dark);
+    background-color: var(--color-primary);
+    box-shadow: 1px 2px var(--color-dark);
     padding: 5px 15px;
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    margin: 20px 10px;
+    transition: .5s;
+}
+
+#templatePropertyConfirm:hover {
+    padding: 15px 20px;
+    font-size: 15px;
+    font-size: 14px;
+    box-shadow: 1px 4px var(--color-dark);
+}
+
+#templatePropInputDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#templatePropertyName {
+    margin: 20px 10px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 1px 2px var(--color-primary);
+    transition: .5s;
+}
+
+#templatePropertyName:focus,
+#templatePropertyName:hover {
+    padding: 15px;
+    box-shadow: 1px 4px var(--color-primary);
+    outline: none;
+}
+
+#templatePropertyType {
+    margin: 20px 10px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 1px 2px var(--color-primary);
+    transition: .5s;
+}
+
+#templatePropertyType:focus,
+#templatePropertyType:hover {
+    font-size: 20px;
+    padding: 12px;
+    box-shadow: 1px 4px var(--color-primary);
+    outline: none;
 }
 
 .templateDescription {
