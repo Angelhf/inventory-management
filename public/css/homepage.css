@@ -68,9 +68,9 @@ MAIN PAGE CSS
 }
 
 #itemsMainContainer {
-    display: flex;
+    display: grid;
     grid-area: itemHolder;
-    background-color: var(--color-secondary);
+    background: linear-gradient(170deg, var(--color-secondary), var(--color-primary));
     padding: 10px 20px;
 }
 
@@ -84,17 +84,17 @@ MAIN PAGE CSS
     background: linear-gradient(var(--color-dark), var(--color-primary));
 }
 
-.itemsMain {
-    background: linear-gradient(170deg, var(--color-secondary), var(--color-primary));
+#itemsMain {
     grid-area: itemHolder;
-    display: grid;
+    display: -ms-inline-grid;
     grid-template-columns: repeat(auto-fit, 320px);
     grid-template-rows: repeat(auto-fit, 320px);
     row-gap: 10px;
     column-gap: 30px;
     overflow: scroll;
     justify-content: left;
-    padding-left: 60px;
+    padding-left: 10px;
+    padding-right: 25px;
     padding-top: 10px;
 }
 
@@ -625,6 +625,8 @@ Template page CSS
 .templateProperty {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin: 10px;
+    padding: 5px;
 }
 
 #templatePropertyConfirm {
