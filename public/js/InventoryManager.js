@@ -291,7 +291,7 @@ function fullItemView(idnumber) {
             }
         } else if (propertytype == "Paragraph") {
             propertyvalue = document.createElement("div");
-            propertyvalue.class = description;
+            propertyvalue.class = "description";
             text = document.createTextNode(value)
             propertyvalue.appendChild(text);
 
