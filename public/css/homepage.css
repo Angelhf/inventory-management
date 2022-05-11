@@ -68,11 +68,7 @@ MAIN PAGE CSS
 }
 
 #itemsMainContainer {
-    display: grid;
-    grid-area: itemHolder;
-    background: linear-gradient(170deg, var(--color-secondary), var(--color-primary));
-    padding: 10px 20px;
-    display:grid;
+   
 }
 
 #search-bar:focus::placeholder {
@@ -87,7 +83,10 @@ MAIN PAGE CSS
 
 #itemsMain {
     grid-area: itemHolder;
-    display: -ms-inline-grid;
+
+    background: linear-gradient(170deg, var(--color-secondary), var(--color-primary));
+    padding: 10px 20px;
+    display:grid;
     grid-template-columns: repeat(auto-fit, 320px);
     grid-template-rows: repeat(auto-fit, 320px);
     row-gap: 10px;

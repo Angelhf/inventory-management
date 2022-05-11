@@ -137,7 +137,6 @@ function createItemJavascript(properties) {
     }
     //pushes the item into the global array
     window.allItems.push(item);
-    console.log(item);
     return item;
 }
 function createItemHTML() {
@@ -237,8 +236,8 @@ function returnToMain() {
     itemView.classList.toggle("hidden", 1);
     main = document.getElementById('mainView');
     main.classList.toggle("hidden", 0);
-    itemsMain = document.getElementById("itemsMainContainer");
-    itemsMain.classList.toggle("hidden", 0);
+    itemsMain = document.getElementById("itemsMain");
+    //itemsMain.classList.toggle("hidden", 0);
 
 
 }
@@ -252,7 +251,7 @@ function editDeleteVis() {
 function fullItemView(idnumber) {
     var itemView = document.getElementById("fullItemViewContainer");
     var mainView = document.getElementById("mainView");
-    var itemsMain = document.getElementById("itemsMainContainer");
+    var itemsMain = document.getElementById("itemsMain");
     var itemProps = document.getElementById("fullItemViewProperties");
     itemView.classList.toggle("hidden", 0);
     itemsMain.classList.toggle("hidden", 1);
@@ -284,7 +283,6 @@ function fullItemView(idnumber) {
             propertyvalue = document.createElement("img");
             propertyvalue.src = value;
         } else if (propertytype == "Boolean") {
-            console.log(value);
             propertyvalue = document.createElement("div");
             var text = document.createTextNode(value);
             propertyvalue.class ="Boolean";
@@ -327,9 +325,9 @@ function editPropertiesConfirmJavascript(itemid) {
 }
 function toItemsView() {
     var itemView = document.getElementById("fullItemViewContainer");
-    var itemsMain = document.getElementById("itemsMainContainer");
-    var itemsMainGrid = document.getElementsByID("itemsMain");
-    itemsMainGrid.classList.toggle("visible",0);
+    //var itemsMain = document.getElementById("itemsMainContainer");
+    var itemsMain = document.getElementById("itemsMain");
+    itemsMain.classList.toggle("visible",0);
     itemView.classList.toggle("hidden", 1);
     itemsMain.classList.toggle("hidden", 0);
 
