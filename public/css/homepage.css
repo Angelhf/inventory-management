@@ -67,8 +67,6 @@ MAIN PAGE CSS
     transition: .5s;
 }
 
-#itemsMainContainer {}
-
 #search-bar:focus::placeholder {
     transform: translateY(15%);
     font-size: 18px;
