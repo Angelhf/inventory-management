@@ -67,9 +67,7 @@ MAIN PAGE CSS
     transition: .5s;
 }
 
-#itemsMainContainer {
-   
-}
+#itemsMainContainer {}
 
 #search-bar:focus::placeholder {
     transform: translateY(15%);
@@ -86,7 +84,7 @@ MAIN PAGE CSS
 
     background: linear-gradient(170deg, var(--color-secondary), var(--color-primary));
     padding: 10px 20px;
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(auto-fit, 320px);
     grid-template-rows: repeat(auto-fit, 320px);
     row-gap: 10px;
@@ -409,9 +407,14 @@ iframe {
 ITEM CREATOR PAGE
 */
 
+#itemCreatorPropertyName {
+    margin-left: 10px;
+}
+
 .itemCreationWindow {
     display: grid;
     height: 100vh;
+    background-color: var(--color-dark);
     grid-template-columns: 1fr 4.5fr 1fr;
     grid-template-rows: 1fr 4fr 1fr 1fr;
     grid-template-areas:
@@ -487,6 +490,7 @@ ITEM CREATOR PAGE
     margin: 30px;
     padding: 30px;
     grid-area: itemCreatorProperties;
+    border-radius: 20px;
 }
 
 #itemCreatorFavoriteDiv {
