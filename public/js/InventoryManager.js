@@ -25,7 +25,7 @@ function domLoaded() {
         createTemplatePopup();
     })
     document.getElementById("templateCancel").addEventListener("click", function () {
-        createTemplateHTML();
+        //createTemplateHTML();
         returnToMain();
     })
     document.getElementById("templateCreate").addEventListener("click", function () {
