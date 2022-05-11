@@ -137,6 +137,7 @@ function createItemJavascript(properties) {
     }
     //pushes the item into the global array
     window.allItems.push(item);
+    console.log(item);
     return item;
 }
 function createItemHTML() {
@@ -148,7 +149,9 @@ function createItemHTML() {
         property = Object.keys(template)[i];
         if (template[Object.keys(template)[i]] == "Image") {
             itemProperties.push(URL.createObjectURL(document.getElementById("itemCreatorProperty" + property).files[0]));
-        } else {
+        } else if((template[Object.keys(template)[i]]) == "Boolean") {
+            itemProperties.push(document.getElementById('itemCreatorProperty' + property).checked);
+        } else{
             itemProperties.push(document.getElementById('itemCreatorProperty' + property).value);
         }
     }
@@ -281,17 +284,15 @@ function fullItemView(idnumber) {
             propertyvalue = document.createElement("img");
             propertyvalue.src = value;
         } else if (propertytype == "Boolean") {
+            console.log(value);
             propertyvalue = document.createElement("div");
-            if (value == "on") {
-                var boolean = document.createTextNode("False");
-                propertyvalue.appendChild(boolean)
-            } else {
-                var boolean = document.createTextNode("True");
-                propertyvalue.appendChild(boolean)
-            }
+            var text = document.createTextNode(value);
+            propertyvalue.class ="Boolean";
+            propertyvalue.appendChild(text);
+            
         } else if (propertytype == "Paragraph") {
             propertyvalue = document.createElement("div");
-            propertyvalue.class = description;
+            propertyvalue.class = "description";
             text = document.createTextNode(value)
             propertyvalue.appendChild(text);
 
@@ -327,8 +328,11 @@ function editPropertiesConfirmJavascript(itemid) {
 function toItemsView() {
     var itemView = document.getElementById("fullItemViewContainer");
     var itemsMain = document.getElementById("itemsMainContainer");
+    var itemsMainGrid = document.getElementsByID("itemsMain");
+    itemsMainGrid.classList.toggle("visible",0);
     itemView.classList.toggle("hidden", 1);
     itemsMain.classList.toggle("hidden", 0);
+
 }
 
 

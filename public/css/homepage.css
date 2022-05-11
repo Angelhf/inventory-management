@@ -71,6 +71,7 @@ MAIN PAGE CSS
     grid-area: itemHolder;
     background-color: var(--color-secondary);
     padding: 10px 20px;
+    display:grid;
 }
 
 #search-bar:focus::placeholder {
@@ -83,9 +84,8 @@ MAIN PAGE CSS
     background: linear-gradient(var(--color-dark), var(--color-primary));
 }
 
-.itemsMain {
+#itemsMain {
     background: linear-gradient(170deg, var(--color-secondary), var(--color-primary));
-    grid-area: itemHolder;
     display: grid;
     grid-template-columns: repeat(auto-fit, 320px);
     grid-template-rows: repeat(auto-fit, 320px);
